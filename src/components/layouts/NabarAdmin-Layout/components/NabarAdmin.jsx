@@ -12,7 +12,6 @@ import { FiLogOut } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { USER_ID } from "../../../../stores/slices/user.slice";
-import LogoTag from "../../../../assets/logo-tag.png";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -38,7 +37,6 @@ const NavAdmin = () => {
           <p className="">{decentralization}</p>
         </NavLink>
         <p className="top-logo">
-          <img src={LogoTag} />
           <span>Cloting - Store</span>
         </p>
         <div className="menu" onClick={toggle}>

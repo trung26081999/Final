@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import Instagram from '../../../../assets/instagram.jpg'
-import Facebook from '../../../../assets/facebook.jpg'
-import Zalo from '../../../../assets/zalo.jpg'
 import './Profile.css';
 import { Modal, Table } from "antd";
 import NavAdmin from "../../../../components/layouts/NabarAdmin-Layout/components/NabarAdmin";
@@ -33,7 +30,6 @@ function Profile() {
     const data = orderState.data.filter(item => {
         return item.userId === profileUser.id
     })
-    console.log("🚀 ~ file: Profile.jsx ~ line 36 ~ data ~ data", data)
 
 
     useEffect(() => {
@@ -244,11 +240,7 @@ function Profile() {
                                     <IoPencilOutline /></span>
                                 </p>
                                 <p>Status: {profileUser.status}</p>
-                                <p className="link-app">
-                                    <img className="fb" src={Facebook} />
-                                    <img className="zl" src={Zalo} />
-                                    <img className="in" src={Instagram} />
-                                </p>
+                                
                                 <p>
                                     <button onClick={() => handleDelete(profileUser.id)} className='delete-user' >delete</button>
                                     <button className="edit-user" onClick={() => {setShowEditUser(!showEditUser)}}>Edit Users</button>

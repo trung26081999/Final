@@ -166,6 +166,9 @@ export default function NavBar() {
   const [menuList, setMenuList] = useState([]);
   const [urlAdmin, setUrlAmin] = useState();
 
+  const navigateToHome = () => {
+    navigate("/");
+  };
   const showDrawer = () => {
     setVisible(true);
   };
@@ -205,7 +208,7 @@ export default function NavBar() {
       <Container>
         <Wrapper>
           <Left>
-            <Logo src={LogoPage} alt="" className="logo" />
+            <Logo src={LogoPage} alt="" className="logo" onClick={navigateToHome} />
           </Left>
           <Center>
             <NavLink to={"/"}>
@@ -221,6 +224,12 @@ export default function NavBar() {
                 ))}
               </ul>
             </MenuItem>
+            <NavLink to={"/contact"}>
+              <MenuItem>Liên hệ</MenuItem>
+            </NavLink>
+            <NavLink to={"/introduce"}>
+              <MenuItem>Giới thiệu</MenuItem>
+            </NavLink>
             <NavLink to={"/cart"}>
               <Badge count={cartItem}>
                 <MenuItem>Giỏ hàng</MenuItem>
