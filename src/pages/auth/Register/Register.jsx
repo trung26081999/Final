@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import "./register.scss";
+import bg_register from "../../../assets/bg_register.png";
 
 const layout = {
   labelCol: {
@@ -63,6 +65,9 @@ export default function Register() {
   return (
     <>
       <div className="profile__member">
+        <div className="img">
+          <img src={bg_register} alt="Login" width="400" />
+        </div>
         <div className="info__member">
           <h1>Đăng ký</h1>
           <div className="form__profile">

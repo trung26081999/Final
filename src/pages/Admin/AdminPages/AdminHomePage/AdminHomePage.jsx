@@ -33,12 +33,7 @@ function AdminHomePage() {
             Store
           </h2>
           <p>
-            <span>
-              <BsMessenger style={{ transform: "translate(50%, 35%)" }} />
-            </span>
-            <span>
-              <IoNotifications style={{ transform: "translate(50%, 35%)" }} />
-            </span>
+            
             <img style={{ width: "40px", borderRadius: "50%" }} src={avatar} />
           </p>
         </div>

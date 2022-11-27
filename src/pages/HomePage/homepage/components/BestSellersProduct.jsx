@@ -85,6 +85,13 @@ const P = styled.p`
   color: #000;
   margin-bottom: 40px;
 `;
+const H2 = styled.p`
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 25px;
+  text-align: center;
+`;
 
 const BestSellersProduct = ({ bestSellerProduct, loading }) => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -103,7 +110,7 @@ const BestSellersProduct = ({ bestSellerProduct, loading }) => {
 
   return (
     <>
-      <P>BEST SELLERS</P>
+      <H2>BEST SELLERS</H2>
       {loading ? (
         <div>
           <LoadingOutlined />

@@ -1,32 +1,33 @@
-
-.products{
+.products {
     width: 100%;
     display: flex;
     position: relative;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background: #8c8c8d;
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
     background: #eaeaeb;
 
 }
-.product{
+
+.product {
     width: 85%;
-    margin: 0  ;
+    margin: 0;
     background-color: #fafafa;
 
 }
 
-.tille-product{
+.tille-product {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -35,45 +36,58 @@
     background: white;
     animation: top 0.5s;
 }
-.tille-product :hover .name-type{
+
+.tille-product :hover .name-type {
     color: blue;
 }
-@keyframes top{
-    0%{ transform: translateY(-100px);}
-    100%{ transform: translateX(0);}
-  }
-.tille-product button{
+
+@keyframes top {
+    0% {
+        transform: translateY(-100px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.tille-product button {
     cursor: pointer;
     border: none;
     background: none;
     font-size: 18px;
     font-weight: 400;
 }
-.tille-product .title-active{
-    border-bottom:1px solid rgb(236, 109, 4) ;
+
+.tille-product .title-active {
+    border-bottom: 1px solid rgb(236, 109, 4);
     color: rgb(236, 109, 4);
 }
-.tille-product .name-title{
+
+.tille-product .name-title {
     cursor: pointer;
     font-size: 18px;
     font-weight: 500;
     padding-top: 5px;
     color: #383d58;
 }
-.tille-product .name-title:hover{
-    border-bottom:1px solid rgb(236, 109, 4) ;
-    color: rgb(236, 109, 4);
-}
-.tille-product .title-search:hover{
-    border-bottom:1px solid rgb(236, 109, 4) ;
+
+.tille-product .name-title:hover {
+    border-bottom: 1px solid rgb(236, 109, 4);
     color: rgb(236, 109, 4);
 }
 
-.list-product{
+.tille-product .title-search:hover {
+    border-bottom: 1px solid rgb(236, 109, 4);
+    color: rgb(236, 109, 4);
+}
+
+.list-product {
     width: 100%;
     padding: 10px;
     flex-wrap: wrap;
 }
+
 .product-item {
     float: left;
     overflow: hidden;
@@ -84,20 +98,20 @@
     display: block;
     text-align: center;
     border-radius: 9px;
-    margin: 1.3%; 
+    margin: 1.3%;
     background: white;
-    background-size:100% 200%;
+    background-size: 100% 200%;
     border: 0.5px solid rgb(235, 234, 234);
-    background-image: linear-gradient(  to top, rgba(245, 133, 59, 0.7) 50%, white 50%);
+    background-image: linear-gradient(to top, rgba(236, 104, 141, 0.7) 50%, white 50%);
     transition: all 0.3s ease-in-out;
     z-index: 0;
 }
 
-.product-item:hover{
+.product-item:hover {
     cursor: pointer;
-    background-position:center bottom;
+    background-position: center bottom;
     color: white;
-    
+
 }
 
 
@@ -113,39 +127,43 @@
 .list-product .product-item:hover .price-pro::after{
     background-color: rgba(190, 190, 190, 0.2);
 } */
-.product-item .pro-img{
+.product-item .pro-img {
     width: 90%;
     text-align: center;
     border-radius: 10px;
 }
 
-.product__listing{
-	display: flex;
-	justify-content: space-between;
-	margin-top: 20px;
+.product__listing {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
     cursor: pointer;
 }
-.product__listing img{
-	width: 70px;
+
+.product__listing img {
+    width: 70px;
 }
-.product__listing:hover{
+
+.product__listing:hover {
     background-color: #f3f3f3;
 }
-.add-product-item{
+
+.add-product-item {
     width: 100%;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, .6);
     z-index: 1000;
 }
-.add-products{
+
+.add-products {
     width: 35%;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     margin: 0 auto;
     padding: 30px 40px 20px 40px;
     background-color: white;
@@ -158,43 +176,46 @@
     font-weight: 400;
 }
 
-.close-add{
+.close-add {
     position: absolute;
     top: 5px;
-    right:15px;
+    right: 15px;
 }
 
-.close-add:hover{
+.close-add:hover {
     cursor: pointer;
     color: red;
 }
 
-.label-input{
+.label-input {
     width: 100%;
     margin-bottom: 20px;
     display: flex;
 }
-.label-input label{
+
+.label-input label {
     float: left;
     width: 35%;
     height: 30px;
 
 }
-.input-product{
+
+.input-product {
     outline: none;
     border: 1px solid wheat;
     width: 60%;
-    height:30px;
-    
+    height: 30px;
+
 }
 
-.label-input .image{
+.label-input .image {
     width: 60%;
     float: left;
 }
-.save-add{
+
+.save-add {
     padding: 5px 20px;
-    font-size: 18px ;
+    font-size: 18px;
     font-weight: 400;
     background-color: #383d58;
     border: none;
@@ -203,28 +224,30 @@
     color: white;
 }
 
-.save-add:hover{
+.save-add:hover {
     cursor: pointer;
     background-color: #2c2f3a;
 }
 
-.text-des{
+.text-des {
     width: 60%;
     border: 0.5px solid wheat;
     overflow-y: none;
     outline: none;
     border-collapse: hidden;
 }
-.show-item{
+
+.show-item {
     width: 100%;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1001;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, .6);
 }
-.detail-item{
+
+.detail-item {
     color: black;
     margin: 20px auto;
     width: 30%;
@@ -232,14 +255,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 15px;
-    background-color:  white;
+    background-color: white;
 }
 
 
 
-.detail-item img{
+.detail-item img {
     border-radius: 10px;
     width: 50%;
     float: left;
@@ -248,11 +271,11 @@
 
 }
 
-.detail-infor{
+.detail-infor {
     text-align: center;
 }
 
-.detail-infor button{
+.detail-infor button {
     padding: 3px 15px;
     font-size: 20px;
     margin-bottom: 10px;
@@ -260,20 +283,24 @@
     font-weight: 100;
     border-radius: 5px;
 }
-.detail-infor .button1{
-    background:#383d58;
+
+.detail-infor .button1 {
+    background: #383d58;
     color: white;
     padding: 3px 26px;
 }
-.button2{
+
+.button2 {
     border: 1px solid #383d58;
     color: #383d58;
 }
-.detail-infor .button1:hover{
+
+.detail-infor .button1:hover {
     background-color: rgb(42, 150, 252);
     cursor: pointer;
 }
-.detail-infor .button2:hover{
+
+.detail-infor .button2:hover {
     cursor: pointer;
     color: white;
     background: rgb(42, 150, 252);
@@ -283,7 +310,7 @@
 
 .detail-infor h3 {
     padding-left: 10px;
-    margin:  40px 0;
+    margin: 40px 0;
     font-size: 20px;
 }
 
@@ -296,14 +323,17 @@
     color: red;
 }
 
-.back{
+.back {
     position: absolute;
     top: 15px;
     right: 15px;
 }
-.back:hover{cursor: pointer;}
 
-.des-detail{
+.back:hover {
+    cursor: pointer;
+}
+
+.des-detail {
     width: 80%;
     padding-top: 20px;
     margin: 20px auto;
@@ -311,10 +341,11 @@
     text-align: left;
 }
 
-.tille-product .ant-drawer.ant-drawer-open .ant-drawer-mask{
+.tille-product .ant-drawer.ant-drawer-open .ant-drawer-mask {
     opacity: 0;
 }
-.scroll-top{
+
+.scroll-top {
     width: 30px;
     height: 30px;
     border-radius: 5px;
@@ -330,51 +361,62 @@
     cursor: pointer;
     z-index: 5;
 }
-.scroll-top span{
+
+.scroll-top span {
     width: 2px;
     height: 8px;
     background: white;
     position: absolute;
-    top:50%;
+    top: 50%;
 }
-.on-top{
+
+.on-top {
     font-size: 30px;
     position: relative;
 }
 
 
 @media screen and (max-width:480px) {
-    .products{
+    .products {
         display: block;
-    padding-top: 50px;
+        padding-top: 50px;
 
     }
-    .tille-product{background: white;}
-    .product .product-item{
-      width: 42%;
-      height: 30vh;
-      box-shadow: 1px 1px 3px 0.01px rgb(199, 196, 196);
-      margin: 3.5%;
-      padding: 5px 0;
+
+    .tille-product {
+        background: white;
     }
-    .product{
-      border: none;
-      width: 100%;
-      padding: 5px auto;
-      background: none;
+
+    .product .product-item {
+        width: 42%;
+        height: 30vh;
+        box-shadow: 1px 1px 3px 0.01px rgb(199, 196, 196);
+        margin: 3.5%;
+        padding: 5px 0;
     }
-    .list-product{
+
+    .product {
+        border: none;
+        width: 100%;
+        padding: 5px auto;
+        background: none;
+    }
+
+    .list-product {
         padding-left: 6%;
     }
-    .detail-item{
+
+    .detail-item {
         width: 80%;
-        
+
     }
-    .detail-infor h3{
+
+    .detail-infor h3 {
         margin: 10px 0;
     }
-    .add-products{
+
+    .add-products {
         width: 80%;
         left: 50%;
     }
-  }
+}

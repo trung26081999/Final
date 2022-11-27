@@ -2,7 +2,6 @@
 @import url('./pages/HomePage/style.css');
 @import url('./pages/HomePage/ListProduct/style.css');
 @import url('./pages/DetailProduct/style.css');
-@import url('./pages/auth/Login/style.css');
 @import url('./pages/auth/Cart/style.css');
 @import url('./pages/auth/Profile/style.css');
 @import url('./pages/auth/PurchaseHistory/style.css');

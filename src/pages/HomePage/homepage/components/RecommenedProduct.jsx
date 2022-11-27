@@ -79,11 +79,13 @@ const Desc = styled.p`
   font-weight: bold;
 `;
 
-const P = styled.p`
+const H2 = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #000;
   margin-bottom: 40px;
+  text-align: center;
+
 `;
 
 const RecommenedProduct = ({ recommenedProduct, loading }) => {
@@ -103,7 +105,7 @@ const RecommenedProduct = ({ recommenedProduct, loading }) => {
 
   return (
     <>
-      <P>RECOMMENDED FOR YOU</P>
+      <H2>RECOMMENDED FOR YOU</H2>
       {loading ? (
         <div>
           <LoadingOutlined />

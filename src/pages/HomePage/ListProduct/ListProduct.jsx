@@ -32,8 +32,10 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  position: relative;
-  padding: 20px 10px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.5s;
 `;
 
 const InfoContainer = styled.div`
@@ -53,17 +55,11 @@ const H2 = styled.p`
   margin-top: 25px;
 `;
 
-const P = styled.h1`
-  font-size: 14px;
-  font-weight: normal;
-  color: #000;
-`;
-
 const Price = styled.p`
   font-size: 16px;
   color: #ff652e;
   font-weight: bold;
-`
+`;
 
 export default function ListProduct() {
   const productState = useSelector((state) => state.product.productState);
