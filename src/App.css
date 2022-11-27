@@ -1,0 +1,10 @@
+@import url('./components/layouts/NavbarUser-Layout/components/NavBar/style.css');
+@import url('./pages/HomePage/style.css');
+@import url('./pages/HomePage/ListProduct/style.css');
+@import url('./pages/DetailProduct/style.css');
+@import url('./pages/auth/Login/style.css');
+@import url('./pages/auth/Cart/style.css');
+@import url('./pages/auth/Profile/style.css');
+@import url('./pages/auth/PurchaseHistory/style.css');
+@import url('./pages/auth/PurchaseHistory/OrderDetail/style.css');
+@import url('./pages/Admin/AdminPages/Edit/style.css');

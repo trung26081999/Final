@@ -1,0 +1,80 @@
+.order{
+    width: 100%;
+    display: flex;
+    background-color: #fafafa;
+}
+
+
+.list-order{
+    margin: 0 auto;
+    width: 83%;
+    margin: 0 1%;
+}
+
+.list-order h2{
+    width: 100%;
+    height: 58px;
+    font-weight: 400;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding-top: 5px;
+    background: white;
+}
+.order-table{
+    width: 100%;
+}
+.handle-button{
+    display: flex;
+    flex-direction: column;
+}
+.handle-button1,
+ .handle-button2{
+    border: 0.5px double rgb(212, 212, 212);
+    padding: 3px 10px;
+    display: block;
+    margin: 3px 0;
+    border-radius: 4px;
+}
+.handle-button1{
+    background-color:rgb(42, 150, 252);
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+.handle-button2{
+    background-color: white;
+    color: rgb(65, 65, 65);
+    cursor: pointer;
+}
+
+.handle-button1:hover{
+    background-color: rgb(137, 183, 252);
+}
+.handle-button2:hover {
+    color: rgb(42, 150, 252);
+    border: 1px solid rgb(42, 150, 252);
+}
+.table-list{
+    width: 100%;
+}
+
+@media screen and (max-width:480px) {
+    .order{
+        display: block;
+        overflow: hidden;
+    }
+    .list-order{
+        margin: 0;
+        padding-top: 58px;
+        border: 0;
+        width: 100%;
+    }
+    .ant-table{
+        overflow-x: scroll;
+    }
+    .ant-table::-webkit-scrollbar{
+        height: 0;
+    }
+    .ant-table-cell{
+font-size: 12px;    }
+
+}

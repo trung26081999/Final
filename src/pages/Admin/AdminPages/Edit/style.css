@@ -1,0 +1,122 @@
+.admin-edit{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+}
+.edit{
+    width: 84%;
+    height: 100vh;
+    margin: 0 1%;
+    background-image: url('https://enjoycoffee.vn/wp-content/uploads/2020/01/coffee.2-810x524-1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.edit-position{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, .7);
+}
+.edit-product{
+    width: 40%;
+    margin: 0 auto;
+    padding: 30px 40px;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.close-edit{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 20px;
+    color: red;
+}
+
+.edit-product h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.close-edit:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.label-input1{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+}
+.label-input1 textarea{
+    width: 64%;
+    border: 1px solid wheat;
+    outline: none;
+}
+.label-input1 label{
+    float: left;
+    width: 35%;
+    height: 30px;
+
+}
+.label-input1 input{
+    outline: none;
+    border: 1px solid wheat;
+    width: 64%;
+    height:30px;
+    
+}
+
+
+.on-button{
+    width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.on-button button{
+    padding: 5px 20px;
+    font-size: 18px ;
+    background-color: #383d58;
+    border: none;
+    color: wheat;
+    border-radius: 10px;
+    margin:0 7%;
+    cursor: pointer;
+    border: 1px solid  #383d58;
+}
+
+
+.on-button button:hover{
+    background-color: white;
+    color: #383d58;
+    border: 1px solid  #383d58;
+}
+
+.label-input1.image{
+    border: 1px solid wheat;
+    
+}
+
+@media screen and (max-width:480px){
+    
+    .admin-edit{
+        display: block;
+    }
+    .edit{
+        width: 100%;
+        /* background-image: none; */
+    }
+    .edit .edit-product{
+        width: 80%;
+    }
+    
+}

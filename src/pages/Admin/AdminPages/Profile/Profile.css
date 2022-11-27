@@ -1,0 +1,488 @@
+*{
+    box-sizing: border-box;
+}
+.body{
+    width: 100%;
+}
+.user-profile {
+    width: 100%;
+    display: flex;
+    background-color: #fafafa;
+}
+
+.profile-user {
+    width: 83%;
+    margin: 0 0 0 2%;
+    display: flex;
+
+}
+
+.search-user {
+    width: 20%;
+    height: 100vh;
+    text-align: center;
+    margin-right: 1%;
+    background-color: white;
+}
+
+.input-search {
+    width: 100%;
+    height: 55px;
+    border: 0.5px solid rgb(212, 212, 212);
+    border-bottom: none;
+    background: #fafafa;
+
+}
+.input-search input {
+    width: 80%;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 5px;
+    margin: 10px auto;
+    background: white;
+    border-radius: 15px;
+    border: 1px solid rgb(255, 214, 214);
+}
+.search-user .list-user {
+    width: 100%;
+    overflow-y: scroll;
+    height: 91.5vh;
+    border-radius: none;
+    box-shadow: none;
+}
+
+.list-user::-webkit-scrollbar {
+    width: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+/* .list-user::-webkit-scrollbar-thumb {
+    background-color: rgb(221, 135, 30);
+    border-radius: 3px;
+    box-shadow: none;
+} */
+
+.item-user {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 0.2px solid rgb(212, 212, 212);
+    color: rgb(78, 78, 78);
+    cursor: pointer;
+    background: white;
+    background-size: 210%;
+    background-image: linear-gradient(to right, white 0%, rgb(255, 255, 255)51%, #faab6a 50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.item-user.active {
+    background: #383d58;
+    color: #e5e5e9;
+}
+
+.item-user:hover {
+    background-position: right center;
+}
+
+.item-user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5%;
+}
+
+.name-user {
+    line-height: 5px;
+    margin-top: 10px;
+
+}
+
+.profile {
+    width: 77%;
+    height: 100vh;
+    margin-right: 2%;
+}
+.info{
+    margin-top: 20px;
+}
+.info .search-click{
+    padding: 10px 0;
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+.search-click p{
+    width: 50%;
+    padding: 5px;
+    background-color: white;
+    margin: auto;
+    border: 1px solid rgb(253, 145, 145);
+    border-radius: 15px;
+}
+.search-click p span{
+    margin-right: 50%;
+}
+.profile .info {
+    width: 100%;
+    min-height: 29vh;
+    margin-bottom: 4vh;
+    border: 0.5px solid rgb(212, 212, 212);
+    position: relative;
+    background-color: white;
+}
+.info-avatar{
+    width: 200px;
+    text-align: center;
+    height: 29vh;
+    float: left;
+}
+.info-avatar img{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 4vh 35px;
+    cursor: pointer;
+    float: left;
+    position: relative;
+}
+
+.info .new-value {
+    outline: none;
+    border: none;
+}
+.info_{
+    position: relative;
+}
+.info1 {
+    padding-top: 3vh;
+    width: 33%;
+    float: left;
+}
+
+.info1 span::before{
+    content: 'Edit';
+    display: none;
+    position: absolute;
+    width: 40px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(77, 78, 78);
+    bottom: -30px;
+    left: -10px;
+    z-index: 1;
+
+}
+.info1 span:hover::before{
+    display: block;
+}
+.info1 .fb {   
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile .info .info1 .link-app{
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-top: -15px;
+}
+
+.info1 .link-app img {
+    width: 40px;
+    height: 40px;
+    border-radius: 15%;
+    cursor: pointer;
+    margin: 20px 10px 0 0;
+}
+
+.info1 span {
+    position: relative;
+    float: right;
+    padding-right: 30px;
+    cursor: pointer;
+    color: rgb(247, 76, 8);
+}
+
+.info1 .delete-user,
+.info1 .edit-user {
+    padding: 3px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #383d58;
+    color: white;
+    border: none;
+    margin-right: 5px;
+    margin-top: 1vh;
+}
+
+.info1 .delete-user:hover,
+.edit-user:hover{
+    background-color: rgb(42, 150, 252);
+}
+
+.history {
+    width: 100%;
+    height: 60vh;
+    overflow-y: scroll;
+    border: 0.5px solid rgb(212, 212, 212);
+}
+
+.history::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 0px;
+    box-shadow: none;
+
+}
+
+.history::-webkit-scrollbar-thumb {
+    background-color: rgb(221, 135, 30);
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.ant-table .ant-table-thead {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.edit-product{
+    width: 40%;
+    margin: 0 auto;
+    padding: 30px 40px;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.close-edit{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 20px;
+    color: red;
+}
+
+.edit-product h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.close-edit:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.label-input1{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+}
+.label-input1 textarea{
+    width: 64%;
+    border: 1px solid wheat;
+    outline: none;
+}
+.label-input1 label{
+    float: left;
+    width: 35%;
+    height: 30px;
+
+}
+.label-input1 input{
+    outline: none;
+    border: 1px solid wheat;
+    width: 64%;
+    height:30px;
+    
+}
+
+.ant-modal-body{
+    min-height: 25vh;
+}
+.edit-avatar-user{
+    float: left; 
+    margin-right: 20px;
+}
+.choose-avatar:hover{
+    color: orangered;
+}
+.edit-avatar-user img{
+    margin-top: 10px;
+}
+
+.on-button{
+    width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.on-button button{
+    padding: 5px 20px;
+    font-size: 18px ;
+    background-color: #383d58;
+    border: none;
+    color: wheat;
+    border-radius: 10px;
+    margin:0 7%;
+    cursor: pointer;
+    border: 1px solid  #383d58;
+}
+
+
+.on-button button:hover{
+    background-color: white;
+    color: #383d58;
+    border: 1px solid  #383d58;
+}
+.edits-user{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1001;
+}
+.edit-user-position{
+    padding: 30px;
+    position: fixed;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    z-index: 1002;
+}
+
+
+@media screen and (max-width:480px) {
+    .user-profile{
+        display: block;
+    }
+    .profile-user{
+        display: block;
+        width: 100%;
+        margin: 0 ;
+    }
+    .profile{
+        width: 100%;
+        margin-top: 50px;
+    }
+    .profile .info{
+        padding: 0;
+        border: none;
+        border-radius: 10px;
+        display: block;
+        background-color: #fafafa;
+    }
+    .info .search-click{
+        display: block;
+    }
+    .profile .info1{
+        width: 50%;
+        display: block;
+        padding-left: 5%;
+    }
+    .profile .info-avatar{
+        text-align: center;
+        width: 100%;
+        height: 200px;
+    }
+    .profile .info-avatar img{
+        width: 150px;
+        float: initial;
+        height: 150px;
+        margin-top: 20px;
+        margin:40px auto;
+        z-index: 10;
+        position: relative;
+        border: 3px solid white;
+    }
+    .info_::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        height: 150px;
+        background-image: url('https://th.bing.com/th/id/R.5c9fdbacce2a1ddb185407cf7a40cee2?rik=XySDgDq%2fa370Dw&riu=http%3a%2f%2fwww.hdwallpaperspulse.com%2fwp-content%2fuploads%2f2017%2f09%2f22%2fawesome-coffee-wallpaper.jpg&ehk=42icNJx0OuBxEh3xWjkq5XTMEZ0tH1N79osEaEPAHAw%3d&risl=&pid=ImgRaw&r=0/wp-content/uploads/2017/12/coffee-pic.jpg.png');
+        background-size: 100%;
+    }
+    .info .info1 p{
+        font-size: 13px;
+    }
+    .info .link-app{
+        width: 150px;
+        float: none;
+        position: initial;
+    }
+    .info .link-app img{
+        width: 30px;
+        height: 30px;
+    }
+    .info .info1 p span{
+        display: none;
+    }
+    .info-button{
+        padding-top: 20px;
+        float: left;
+    } 
+    .info-button .delete-user{
+        position: initial;
+    }
+    .edit-user{
+        display: initial;
+    }
+    .search-user{
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        overflow: hidden;
+        z-index: 1000;
+    }
+    .search-user.show-list-user{
+        display: block;
+    }
+    .input-search span::before{
+        content: '';
+        width: 10px;
+        height: 10px ;
+        transform: rotate(45deg);
+        border: 2px  solid rgb(253, 118, 7);
+        border-right: 0;
+        border-top: 0;
+        position: absolute;
+        left: 10px;
+        top:20px;
+        cursor: pointer;
+    }
+    .item-user{
+        padding-left: 25%;
+    }
+    .item-user.active{
+        background-color: white;
+        color: #383d58;
+    }
+    .edit-user-position{
+        width: 90%;
+        padding:35px 5px;
+    }
+    .close-edit{
+        right: 5px;
+        top: 0px;
+    }
+}

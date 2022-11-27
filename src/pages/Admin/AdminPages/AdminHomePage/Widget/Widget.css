@@ -1,0 +1,81 @@
+.widget {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    border-radius: 10px;
+    height: 120px;
+    width: 100%;
+    background-color: white;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left.name-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.counter {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.link {
+    width: max-content;
+    font-size: 12px;
+    text-decoration: none;
+    border-bottom: 1px solid gray;
+}
+.link:hover{
+    color: darkmagenta;
+    font-style: italic;
+    border-bottom: 1px solid darkmagenta;
+}
+.percentage {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.right .icon {
+    font-size: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: flex-end;
+}
+@media screen and (max-width:480px) {
+    .widget{
+        width: 100%;
+        padding: 10px;
+        height: 100px;
+    }
+    .left.name-title{
+        font-size: 15px;
+    }
+    .left .counter{
+        font-size: 15px;
+    }
+    .left .link{
+        font-size: 10px;
+    }
+}
