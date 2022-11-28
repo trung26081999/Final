@@ -2,17 +2,10 @@ import { Menu } from 'antd';
 import "./navbar.scss";
 export const category = [
   {
-    title: "KidsClothing",
-    path: "/kidsclothing",
+    title: "AllProducts",
+    path: "/allproducts",
   },
-  {
-    title: "Womenshoes",
-    path: "/womenshoes",
-  },
-  {
-    title: "Mensclothing",
-    path: "/menclothing",
-  },
+ 
 ];
 const MenuBar = () => {
     return (<>

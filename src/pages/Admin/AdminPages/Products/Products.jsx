@@ -16,7 +16,7 @@ import { BsSearch } from "react-icons/bs";
 import { RiArrowDropUpLine } from "react-icons/ri";
 import NavAdmin from "../../../../components/layouts/NabarAdmin-Layout/components/NabarAdmin";
 
-const tabs = ["all", "kidsclothing", "womenshoes", "menclothing"];
+const tabs = ["all", "kidsclothing","kidshoes", "womenshoes","womensclothing", "menclothing","menshoes"];
 function Products() {
   const [addProduct, setAddProduct] = useState(false);
   const [showDetail, setShowDetail] = useState(false);

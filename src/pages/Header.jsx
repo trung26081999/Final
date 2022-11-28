@@ -6,9 +6,7 @@ import Login from "./auth/Login/Login";
 import Profile from "./auth/Profile/Profile";
 import Register from "./auth/Register/Register";
 import HomePage from "./HomePage/HomePage";
-import MenClothing from "./products/product-list/MenClothing";
-import KidsClothing from "./products/product-list/KidsClothing";
-import Womenshoes from "./products/product-list/Womenshoes";
+import AllProducts from "./products/product-list/AllProducts";
 
 export default function Header(props) {
   const location = useLocation();
@@ -23,12 +21,8 @@ export default function Header(props) {
         return <Cart />;
       case "/profile":
         return <Profile />;
-      case "/kidsclothing":
-        return <KidsClothing />;
-      case "/womenshoes":
-        return <Womenshoes />;
-      case "/menclothing":
-        return <MenClothing />;
+      case "/allproducts":
+        return <AllProducts />;
       case "/register":
         return <Register />;
       default:

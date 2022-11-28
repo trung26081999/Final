@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import 'antd/dist/antd.min.css';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { appStore } from "./stores/index.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));

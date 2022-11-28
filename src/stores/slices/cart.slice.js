@@ -119,10 +119,13 @@ const cartSlice = createSlice({
                 loading: false,
                 error: action.payload.error
             }
-		}
+		},
+		updateProductCartAction: (state, action) => {
+
+        },
 	}
 })
 
-export const {addToCartAction, removeCartAction, getTotalBill, getTotalItem, deleteCartItemAction, paymentAction, paymentActionSuccess, paymentActionFailed, fetchOrderAction, fetchOrderActionSuccess, fetchOrderActionError, cancelOrderAction, cancelOrderSuccessAction, cancelOrderFailedAction} = cartSlice.actions
+export const {addToCartAction,updateProductCartAction, removeCartAction, getTotalBill, getTotalItem, deleteCartItemAction, paymentAction, paymentActionSuccess, paymentActionFailed, fetchOrderAction, fetchOrderActionSuccess, fetchOrderActionError, cancelOrderAction, cancelOrderSuccessAction, cancelOrderFailedAction} = cartSlice.actions
 
 export const cartReducer = cartSlice.reducer

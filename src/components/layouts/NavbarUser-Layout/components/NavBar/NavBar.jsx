@@ -208,22 +208,21 @@ export default function NavBar() {
       <Container>
         <Wrapper>
           <Left>
-            <Logo src={LogoPage} alt="" className="logo" onClick={navigateToHome} />
+            <Logo
+              src={LogoPage}
+              alt=""
+              className="logo"
+              onClick={navigateToHome}
+            />
           </Left>
           <Center>
             <NavLink to={"/"}>
               <MenuItem>Trang chủ</MenuItem>
             </NavLink>
-            <MenuItem className="menu">
-              Sản phẩm
-              <ul className="category">
-                {category.map((item, index) => (
-                  <NavLink to={item.path} key={index}>
-                    <li>{item.title}</li>
-                  </NavLink>
-                ))}
-              </ul>
-            </MenuItem>
+            <NavLink to={"/allproducts"}>
+            <MenuItem className="menu">Sản phẩm</MenuItem>
+
+            </NavLink>
             <NavLink to={"/contact"}>
               <MenuItem>Liên hệ</MenuItem>
             </NavLink>
