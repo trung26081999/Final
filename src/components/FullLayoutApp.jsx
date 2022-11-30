@@ -1,13 +1,14 @@
-import React from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Admin from "../pages/Admin/Admin";
-import Edit from "../pages/Admin/AdminPages/Edit/Edit";
-import Profile from "../pages/Admin/AdminPages/Profile/Profile";
-import Success from "../pages/auth/Cart/CheckoutSuccess/Success";
-import OrderDetail from "../pages/auth/PurchaseHistory/OrderDetail/OrderDetail";
-import PurchaseHistory from "../pages/auth/PurchaseHistory/PurchaseHistory";
-import DetailProduct from "../pages/DetailProduct/DetailProduct";
-import Header from "../pages/Header";
+import React from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Admin from '../pages/Admin/Admin'
+import Edit from '../pages/Admin/AdminPages/Edit/Edit'
+import Profile from '../pages/Admin/AdminPages/Profile/Profile'
+import Success from '../pages/auth/Cart/CheckoutSuccess/Success'
+import OrderDetail from '../pages/auth/PurchaseHistory/OrderDetail/OrderDetail'
+import PurchaseHistory from '../pages/auth/PurchaseHistory/PurchaseHistory'
+import DetailProduct from '../pages/DetailProduct/DetailProduct'
+import Footer from '../pages/Footer/Footer'
+import Header from '../pages/Header'
 
 export function FullLayoutApp() {
   return (
@@ -15,14 +16,28 @@ export function FullLayoutApp() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}></Route>
+
           <Route path="/product-detail/:id" element={<DetailProduct />}></Route>
           <Route path="/Login" element={<Header />}></Route>
           <Route path="/cart" element={<Header />}></Route>
+          <Route path="/contact" element={<Header />}></Route>
           <Route path="/profile" element={<Header />}></Route>
           <Route path="/kidsclothing" element={<Header />}></Route>
           <Route path="/womenshoes" element={<Header />}></Route>
           <Route path="/menclothing" element={<Header />}></Route>
           <Route path="/register" element={<Header />}></Route>
+
+          <Route path="/" element={<Footer />}></Route>
+
+          <Route path="/Login" element={<Footer />}></Route>
+          <Route path="/cart" element={<Footer />}></Route>
+          <Route path="/contact" element={<Footer />}></Route>
+          <Route path="/profile" element={<Footer />}></Route>
+          <Route path="/kidsclothing" element={<Footer />}></Route>
+          <Route path="/womenshoes" element={<Footer />}></Route>
+          <Route path="/menclothing" element={<Footer />}></Route>
+          <Route path="/register" element={<Footer />}></Route>
+
           <Route path="/cart/success/:id" element={<Success />}></Route>
           <Route
             path="/order-list/detail:id"
@@ -36,7 +51,6 @@ export function FullLayoutApp() {
           <Route path="/dashboard" element={<Admin />}></Route>
           <Route path="/admin/product" element={<Admin />}></Route>
 
-
           <Route path="/admin/order" element={<Admin />}></Route>
           <Route path="/admin/delivery" element={<Admin />}></Route>
           <Route path="/admin/statistics" element={<Admin />}></Route>
@@ -46,5 +60,5 @@ export function FullLayoutApp() {
         </Routes>
       </BrowserRouter>
     </>
-  );
+  )
 }

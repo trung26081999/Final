@@ -1,19 +1,18 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import NavBarLayout from '../components/layouts/NavbarUser-Layout/NabarLayout'
-import Cart from './auth/Cart/Cart'
-import Login from './auth/Login/Login'
-import Profile from './auth/Profile/Profile'
-import Register from './auth/Register/Register'
-import HomePage from './HomePage/HomePage'
-import MenClothing from './products/product-list/MenClothing'
-import KidsClothing from './products/product-list/KidsClothing'
-import Womenshoes from './products/product-list/Womenshoes'
-import Contact from './Contact/Contact'
+import FooterLayout from '../../components/layouts/Footer-Layout/FooterLayout'
+import Cart from '../auth/Cart/Cart'
+import Login from '../auth/Login/Login'
+import Profile from '../auth/Profile/Profile'
+import Register from '../auth/Register/Register'
+import Contact from '../Contact/Contact'
+import HomePage from '../HomePage/HomePage'
+import KidsClothing from '../products/product-list/KidsClothing'
+import MenClothing from '../products/product-list/MenClothing'
+import Womenshoes from '../products/product-list/Womenshoes'
 
-export default function Header(props) {
+export default function Footer(props) {
   const location = useLocation()
-
   const renderContent = () => {
     switch (location.pathname) {
       case '/':
@@ -39,5 +38,5 @@ export default function Header(props) {
     }
   }
 
-  return <NavBarLayout>{renderContent()}</NavBarLayout>
+  return <FooterLayout>{renderContent()}</FooterLayout>
 }
