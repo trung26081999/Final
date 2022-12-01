@@ -21,6 +21,7 @@ export function FullLayoutApp() {
           <Route path="/Login" element={<Header />}></Route>
           <Route path="/cart" element={<Header />}></Route>
           <Route path="/contact" element={<Header />}></Route>
+          <Route path="/introduce" element={<Header />}></Route>
           <Route path="/profile" element={<Header />}></Route>
           <Route path="/kidsclothing" element={<Header />}></Route>
           <Route path="/womenshoes" element={<Header />}></Route>

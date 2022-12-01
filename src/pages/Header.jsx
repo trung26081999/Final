@@ -10,6 +10,7 @@ import MenClothing from './products/product-list/MenClothing'
 import KidsClothing from './products/product-list/KidsClothing'
 import Womenshoes from './products/product-list/Womenshoes'
 import Contact from './Contact/Contact'
+import About from './About/About'
 
 export default function Header(props) {
   const location = useLocation()
@@ -24,6 +25,8 @@ export default function Header(props) {
         return <Cart />
       case '/contact':
         return <Contact />
+      case '/introduce':
+        return <About />
       case '/profile':
         return <Profile />
       case '/kidsclothing':
