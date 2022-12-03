@@ -28,6 +28,7 @@
     "react-toastify": "^9.1.1",
     "recharts": "^2.1.16",
     "redux-saga": "^1.2.1",
+    "remixicon": "^2.5.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
