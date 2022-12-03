@@ -1,73 +1,88 @@
-import React from "react";
-import { notification, Radio, Button } from "antd";
-import { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import { addToCartAction } from "../../stores/slices/cart.slice";
-import { v4 } from "uuid";
-import NavBar from "../../components/layouts/NavbarUser-Layout/components/NavBar/NavBar";
+import React from 'react'
+import { notification, Radio, Button } from 'antd'
+import { useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
+import { addToCartAction } from '../../stores/slices/cart.slice'
+import { v4 } from 'uuid'
+import NavBar from '../../components/layouts/NavbarUser-Layout/components/NavBar/NavBar'
+import { FaStar, FaStarHalf } from 'react-icons/fa'
 
-const ButtonGroup = Button.Group;
+const ButtonGroup = Button.Group
 
 const listSize = [
-  { label: "S", price: 0 },
-  { label: "M", price: 0 },
-  { label: "L", price: 0 },
-  { label: "XL", price: 0 },
-  { label: "XXL", price: 0 },
-];
+  { label: 'S', price: 0 },
+  { label: 'M', price: 0 },
+  { label: 'L', price: 0 },
+  { label: 'XL', price: 0 },
+  { label: 'XXL', price: 0 },
+]
 
 export default function DetailProduct() {
-  const [value, setValue] = useState(0);
-  const [count, setCount] = useState(1);
-  const location = useLocation();
-  const dispatch = useDispatch();
+  const [value, setValue] = useState(0)
+  const [count, setCount] = useState(1)
+  const location = useLocation()
+  const dispatch = useDispatch()
 
-  const { id } = useParams();
-  const image = location.state.image;
-  const productName = location.state.productName;
-  const price = location.state.price;
-  const description = location.state.description;
-  const type = location.state.type;
-  const total = price * count + value.price * count;
+  const { id } = useParams()
+  const image = location.state.image
+  const productName = location.state.productName
+  console.log(productName)
+  const price = location.state.price
+  console.log(price)
+  const description = location.state.description
+  console.log(description)
+  const type = location.state.type
+  console.log(type)
+  const total = price * count + value.price * count
+  console.log(total)
 
   const increase = () => {
-    setCount(count + 1);
-  };
+    setCount(count + 1)
+  }
 
   const decline = () => {
-    let newCount = count - 1;
+    let newCount = count - 1
 
     if (newCount < 1) {
-      newCount = 1;
+      newCount = 1
     }
-    setCount(newCount);
-  };
+    setCount(newCount)
+  }
 
   const onChange = (e) => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
 
-  const handleAddToCart = (image, productName, total, count, size, type) => {
+  const handleAddToCart = (
+    image,
+    productName,
+    price,
+    total,
+    count,
+    size,
+    type,
+  ) => {
     if (value === 0) {
       notification.error({
         message: `Bạn chưa chọn size!`,
-      });
+      })
     } else {
       const cartItem = {
         id: v4(),
         idProduct: id,
         image: image,
         productName: productName,
+        price: price,
         type: type,
         total: total,
         count: count,
         size: size,
-      };
-      dispatch(addToCartAction(cartItem));
+      }
+      dispatch(addToCartAction(cartItem))
     }
-  };
+  }
 
   return (
     <>
@@ -109,10 +124,43 @@ export default function DetailProduct() {
                       <Radio key={item.label} value={item}>
                         {item.label}
                       </Radio>
-                    );
+                    )
                   })}
                 </Radio.Group>
               </div>
+            </div>
+            <div className="product__rating d-flex align-items-center gap-5 mb-3">
+              <div className="start">
+                <span>
+                  <i>
+                    <FaStar />
+                  </i>
+                </span>
+                <span>
+                  <i>
+                    <FaStar />
+                  </i>
+                </span>
+                <span>
+                  <i>
+                    <FaStar />
+                  </i>
+                </span>
+                <span>
+                  <i>
+                    <FaStar />
+                  </i>
+                </span>
+                <span>
+                  <i>
+                    <FaStarHalf />
+                  </i>
+                </span>
+              </div>
+
+              <p>
+                (<span>{}</span> ratings)
+              </p>
             </div>
             <button
               onClick={() =>
@@ -125,5 +173,5 @@ export default function DetailProduct() {
         </div>
       </div>
     </>
-  );
+  )
 }

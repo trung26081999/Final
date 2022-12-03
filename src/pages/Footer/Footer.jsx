@@ -2,6 +2,8 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import FooterLayout from '../../components/layouts/Footer-Layout/FooterLayout'
 import Cart from '../auth/Cart/Cart'
+// import Cart from '../auth/Cart/Cart'
+import Checkout from '../auth/Cart/Checkout'
 import Login from '../auth/Login/Login'
 import Profile from '../auth/Profile/Profile'
 import Register from '../auth/Register/Register'
@@ -21,6 +23,8 @@ export default function Footer(props) {
         return <Login />
       case '/cart':
         return <Cart />
+      case '/checkout':
+        return <Checkout />
       case '/contact':
         return <Contact />
       case '/profile':

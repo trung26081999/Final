@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import NavBarLayout from '../components/layouts/NavbarUser-Layout/NabarLayout'
-import Cart from './auth/Cart/Cart'
+// import Cart from './auth/Cart/Checkout'
 import Login from './auth/Login/Login'
 import Profile from './auth/Profile/Profile'
 import Register from './auth/Register/Register'
@@ -11,6 +11,8 @@ import KidsClothing from './products/product-list/KidsClothing'
 import Womenshoes from './products/product-list/Womenshoes'
 import Contact from './Contact/Contact'
 import About from './About/About'
+import Checkout from './auth/Cart/Checkout'
+import Cart from './auth/Cart/Cart'
 
 export default function Header(props) {
   const location = useLocation()
@@ -23,6 +25,8 @@ export default function Header(props) {
         return <Login />
       case '/cart':
         return <Cart />
+      case '/checkout':
+        return <Checkout />
       case '/contact':
         return <Contact />
       case '/introduce':

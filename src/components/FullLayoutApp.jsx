@@ -20,6 +20,8 @@ export function FullLayoutApp() {
           <Route path="/product-detail/:id" element={<DetailProduct />}></Route>
           <Route path="/Login" element={<Header />}></Route>
           <Route path="/cart" element={<Header />}></Route>
+          <Route path="/checkout" element={<Header />}></Route>
+
           <Route path="/contact" element={<Header />}></Route>
           <Route path="/introduce" element={<Header />}></Route>
           <Route path="/profile" element={<Header />}></Route>
@@ -32,6 +34,8 @@ export function FullLayoutApp() {
 
           <Route path="/Login" element={<Footer />}></Route>
           <Route path="/cart" element={<Footer />}></Route>
+          <Route path="/checkout" element={<Footer />}></Route>
+
           <Route path="/contact" element={<Footer />}></Route>
           <Route path="/profile" element={<Footer />}></Route>
           <Route path="/kidsclothing" element={<Footer />}></Route>
