@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchCategoryAction } from "../../../stores/slices/product.slice";
+import { fetchCategoryAction } from "../../../../stores/slices/product.slice";
 import styled from "styled-components";
 
 const Container1 = styled.div`
@@ -18,7 +18,6 @@ const ContainerProduct = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: calc(20% - 10px);
   border: 1px solid #ddd;
   margin: 20px;
   height: 100%;
@@ -144,7 +143,7 @@ export default function AllProducts() {
           <option value="descending">Thứ tự theo giá: Cao đến thấp</option>
         </select>
         <select onChange={handleFilter}>
-        <option value="">Tất cả</option>
+          <option value="">Tất cả</option>
           <option value="kidsclothing">Kid Clothing</option>
           <option value="kidshoes">Kid Shoes</option>
           <option value="mensclothing">Men Clothing</option>

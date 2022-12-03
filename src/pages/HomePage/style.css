@@ -1,0 +1,29 @@
+.scroll-top {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    background-color: #383d58;
+    border: 1px solid #383d58;
+    font-size: 25px;
+    color: white;
+    position: fixed;
+    bottom: 10px;
+    right: 0px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.scroll-top span {
+    width: 2px;
+    height: 8px;
+    background: white;
+    position: absolute;
+    top: 50%;
+}
+
+.on-top {
+    font-size: 30px;
+    position: relative;
+}

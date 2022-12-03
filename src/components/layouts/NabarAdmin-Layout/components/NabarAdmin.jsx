@@ -12,6 +12,7 @@ import { FiLogOut } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { USER_ID } from "../../../../stores/slices/user.slice";
+import { CART_ID } from "../../../../stores/slices/cart.slice";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 

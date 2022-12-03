@@ -6,7 +6,7 @@ import Login from "./auth/Login/Login";
 import Profile from "./auth/Profile/Profile";
 import Register from "./auth/Register/Register";
 import HomePage from "./HomePage/HomePage";
-import AllProducts from "./products/product-list/AllProducts";
+import AllProducts from "./HomePage/products/product-list/AllProducts";
 
 export default function Header(props) {
   const location = useLocation();
