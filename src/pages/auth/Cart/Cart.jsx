@@ -90,7 +90,7 @@ export default function Cart() {
                     })} />
                 </div>
                 <div className="order__product">
-                    <h2>Sản phẩm đả chọn</h2>
+                    <h2>Sản phẩm đã chọn</h2>
                     {listCartItem?.map?.((item) => {
                         return (
                             <div key={item.id} className="select__product">

@@ -7,6 +7,8 @@ import Success from "../pages/auth/Cart/CheckoutSuccess/Success";
 import OrderDetail from "../pages/auth/PurchaseHistory/OrderDetail/OrderDetail";
 import PurchaseHistory from "../pages/auth/PurchaseHistory/PurchaseHistory";
 import DetailProduct from "../pages/DetailProduct/DetailProduct";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 import Header from "../pages/Header";
 
 export function FullLayoutApp() {
@@ -20,6 +22,8 @@ export function FullLayoutApp() {
           <Route path="/cart" element={<Header />}></Route>
           <Route path="/profile" element={<Header />}></Route>
           <Route path="/allproducts" element={<Header />}></Route>
+          <Route path="/contact" element={<Header />}></Route>
+          <Route path="/introduce" element={<Header />}></Route>
           <Route path="/register" element={<Header />}></Route>
           <Route path="/cart/success/:id" element={<Success />}></Route>
           <Route

@@ -7,6 +7,8 @@ import Profile from "./auth/Profile/Profile";
 import Register from "./auth/Register/Register";
 import HomePage from "./HomePage/HomePage";
 import AllProducts from "./HomePage/products/product-list/AllProducts";
+import Contact from './Contact/Contact';
+import About from './About/About';
 
 export default function Header(props) {
   const location = useLocation();
@@ -19,12 +21,18 @@ export default function Header(props) {
         return <Login />;
       case "/cart":
         return <Cart />;
+      case "/contact":
+        return <Contact />;
+      case "/introduce":
+        return <About />;
+
       case "/profile":
         return <Profile />;
       case "/allproducts":
         return <AllProducts />;
       case "/register":
         return <Register />;
+      
       default:
         return <HomePage />;
     }

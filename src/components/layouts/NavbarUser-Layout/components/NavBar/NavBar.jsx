@@ -292,7 +292,11 @@ export default function NavBar() {
                         color: "black",
                       }}
                     >
+                      
                       <BiUserCircle />
+                      {userInfo.email}
+                    
+
                     </Button>
                   </Dropdown>
                 </Space>
