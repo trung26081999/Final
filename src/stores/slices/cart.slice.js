@@ -4,10 +4,10 @@ import { toast } from 'react-toastify'
 
 export const ORDER_LIMIT = 7
 
-export const CART_ITEM_KEY = 'CART_ITEM'
+export const CART_ITEM_STORAGE = 'CART_ITEM'
 
-const cartInfoFromStorage = localStorage?.getItem(CART_ITEM_KEY)
-  ? JSON.parse(localStorage?.getItem(CART_ITEM_KEY))
+const cartInfoFromStorage = localStorage?.getItem(CART_ITEM_STORAGE)
+  ? JSON.parse(localStorage?.getItem(CART_ITEM_STORAGE))
   : []
 
 console.log(cartInfoFromStorage)
@@ -55,7 +55,7 @@ const cartSlice = createSlice({
 
       cart.push(cartItem)
 
-      localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
+      localStorage.setItem(CART_ITEM_STORAGE, JSON.stringify(cart))
 
       // state.cartState.cart.push(cartItem)
 
@@ -71,19 +71,26 @@ const cartSlice = createSlice({
     increaseCart: (state, action) => {
       const cartIndex = action.payload
       console.log(cartIndex)
-      console.log(state.cartState.cart)
+
+      // console.log(state.cartState.cart)
       const cart = state.cartState.cart
       console.log(cart)
       const itemIndex = cart?.findIndex((item) => item.id === cartIndex.id)
 
       if (itemIndex >= 0) {
-        cart[itemIndex].count += 1
+        console.log(cart[itemIndex].count)
+        const count = (cart[itemIndex].count += 1)
+        console.log(count)
+
+        console.log(cart[itemIndex].size.price)
         console.log(cart[itemIndex].total)
-        cart[itemIndex].total++
+        const total = count * cart[itemIndex].size.price
+        console.log(total)
+        cart[itemIndex].total = total
 
         toast.success(`Item QTY Increased`)
       }
-      localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
+      // localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
     },
     decreaseCart: (state, action) => {
       const cartIndex = action.payload
@@ -93,12 +100,21 @@ const cartSlice = createSlice({
       const itemIndex = cart?.findIndex((item) => item.id === cartIndex.id)
 
       if (cart[itemIndex].count > 1) {
-        cart[itemIndex].count -= 1
-        cart[itemIndex].total--
+        console.log(cart[itemIndex].count)
+        const count = (cart[itemIndex].count -= 1)
+        console.log(count)
+
+        console.log(cart[itemIndex].size.price)
+        console.log(cart[itemIndex].total)
+        const total = count * cart[itemIndex].size.price
+        console.log(total)
+        cart[itemIndex].total = total
+
+        toast.success(`Item QTY Increased`)
 
         toast.success(`Item QTY Decreased`)
       }
-      localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
+      // localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
     },
     removeCartAction: (state, action) => {
       const listCartItem = state.cartState.cart
@@ -133,7 +149,7 @@ const cartSlice = createSlice({
       // const cartItemObj = JSON.parse(JSON.stringify(cartItem))
       // console.log(cartItemObj)
       console.log(state.cartState)
-      console.log(state.cartState.cartItem.length)
+      // console.log(state.cartState.cartItem.length)
 
       // localStorage.setItem(
       //   CART_ITEM_KEY,
@@ -158,10 +174,13 @@ const cartSlice = createSlice({
       )
       console.log(state.cartState.cart)
       state.cartState.cart = deleteCart
-      localStorage.setItem(CART_ITEM_KEY, JSON.stringify(state.cartState.cart))
+      localStorage.setItem(
+        CART_ITEM_STORAGE,
+        JSON.stringify(state.cartState.cart),
+      )
     },
     clearCart: (state, aciton) => {
-      localStorage.removeItem(CART_ITEM_KEY)
+      localStorage.removeItem(CART_ITEM_STORAGE)
       // state.cartState.data = []
       state.cartState = initialState
       toast.error('Cart cleared', { position: 'bottom-left' })
@@ -173,6 +192,7 @@ const cartSlice = createSlice({
       }
     },
     paymentActionSuccess: (state, action) => {
+      localStorage.removeItem(CART_ITEM_STORAGE)
       notification.success({
         message: `Đặt hàng thành công!`,
       })
