@@ -159,6 +159,7 @@ export default function NavBar() {
 
   const cartItem = cartState.cartItem
   console.log(cartItem)
+  // console.log(cartItem.length)
   const listCartItem = cartState.cart
   const userInfoDashboard = userInfo?.data?.decentralization
 
@@ -180,7 +181,7 @@ export default function NavBar() {
 
   useEffect(() => {
     dispatch(getTotalItem())
-  }, [listCartItem])
+  }, [listCartItem, dispatch])
 
   useEffect(() => {
     return !userInfo.data

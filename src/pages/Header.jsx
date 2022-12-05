@@ -13,6 +13,8 @@ import Contact from './Contact/Contact'
 import About from './About/About'
 import Checkout from './auth/Cart/Checkout'
 import Cart from './auth/Cart/Cart'
+import ForgotPassword from './auth/Cart/forgotPassword/ForgotPassword'
+import ResetPassword from './auth/Cart/resetPassword/ResetPassword'
 
 export default function Header(props) {
   const location = useLocation()
@@ -31,6 +33,10 @@ export default function Header(props) {
         return <Contact />
       case '/introduce':
         return <About />
+      case '/forgot':
+        return <ForgotPassword />
+      case '/reset':
+        return <ResetPassword />
       case '/profile':
         return <Profile />
       case '/kidsclothing':

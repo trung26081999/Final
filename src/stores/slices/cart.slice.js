@@ -6,18 +6,18 @@ export const ORDER_LIMIT = 7
 
 export const CART_ITEM_KEY = 'CART_ITEM'
 
-// const cartInfoFromStorage = localStorage?.getItem(CART_ITEM_KEY)
-//   ? JSON.parse(localStorage?.getItem(CART_ITEM_KEY))
-//   : []
+const cartInfoFromStorage = localStorage?.getItem(CART_ITEM_KEY)
+  ? JSON.parse(localStorage?.getItem(CART_ITEM_KEY))
+  : []
 
-// console.log(cartInfoFromStorage)
+console.log(cartInfoFromStorage)
 
 const initialState = {
   cartState: {
     cancelled: '',
     bill: [],
-    // cart: cartInfoFromStorage,
-    cart: [],
+    cart: cartInfoFromStorage,
+    // cart: [],
     data: [],
     totalBill: 0,
     totalAmount: 0,
@@ -69,23 +69,32 @@ const cartSlice = createSlice({
       // console.log(state.cartState)
     },
     increaseCart: (state, action) => {
+      const cartIndex = action.payload
+      console.log(cartIndex)
       console.log(state.cartState.cart)
       const cart = state.cartState.cart
-      const itemIndex = cart?.findIndex((item) => item.id === action.payload.id)
+      console.log(cart)
+      const itemIndex = cart?.findIndex((item) => item.id === cartIndex.id)
 
       if (itemIndex >= 0) {
-        cart[itemIndex].amount += 1
+        cart[itemIndex].count += 1
+        console.log(cart[itemIndex].total)
+        cart[itemIndex].total++
+
         toast.success(`Item QTY Increased`)
       }
       localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
     },
     decreaseCart: (state, action) => {
+      const cartIndex = action.payload
+      console.log(cartIndex)
       console.log(state.cartState.cart)
       const cart = state.cartState.cart
-      const itemIndex = cart?.findIndex((item) => item.id === action.payload.id)
+      const itemIndex = cart?.findIndex((item) => item.id === cartIndex.id)
 
-      if (cart[itemIndex].amount > 1) {
-        cart[itemIndex].amount -= 1
+      if (cart[itemIndex].count > 1) {
+        cart[itemIndex].count -= 1
+        cart[itemIndex].total--
 
         toast.success(`Item QTY Decreased`)
       }
@@ -110,6 +119,10 @@ const cartSlice = createSlice({
         0,
       )
       state.cartState.totalBill = totalBill
+      // localStorage.setItem(
+      //   CART_ITEM_KEY,
+      //   JSON.stringify(state.cartState.totalBill),
+      // )
     },
     getTotalItem: (state, action) => {
       const cartItem = state?.cartState?.cart?.reduce?.(
@@ -117,7 +130,11 @@ const cartSlice = createSlice({
         0,
       )
       console.log(cartItem)
-      console.log(state.cartState.cartItem)
+      // const cartItemObj = JSON.parse(JSON.stringify(cartItem))
+      // console.log(cartItemObj)
+      console.log(state.cartState)
+      console.log(state.cartState.cartItem.length)
+
       // localStorage.setItem(
       //   CART_ITEM_KEY,
       //   JSON.stringify(state.cartState.cartItem),
@@ -139,7 +156,9 @@ const cartSlice = createSlice({
       const deleteCart = state.cartState.cart.filter(
         (item) => item.id !== idCartItem,
       )
+      console.log(state.cartState.cart)
       state.cartState.cart = deleteCart
+      localStorage.setItem(CART_ITEM_KEY, JSON.stringify(state.cartState.cart))
     },
     clearCart: (state, aciton) => {
       localStorage.removeItem(CART_ITEM_KEY)

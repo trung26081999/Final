@@ -3,20 +3,22 @@ import React from 'react'
 import { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { motion } from 'framer-motion'
+import { RiDeleteBinLine } from 'react-icons/ri'
+
 import './Cart.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import {
   clearCart,
   decreaseCart,
   deleteCartItemAction,
-  getTotal,
-  getTotalAmount,
   getTotalBill,
   increaseCart,
   removeCartAction,
 } from '../../../stores/slices/cart.slice'
 import EmptyComp from './Empty/Empty'
 import NoUser from './Empty/NoUser'
+import { useEffect } from 'react'
 
 export default function Cart() {
   const navigate = useNavigate()
@@ -25,8 +27,11 @@ export default function Cart() {
   const cartState = useSelector((state) => state.cart.cartState)
 
   console.log(cartState)
+  console.log(cartState)
   const totalAmount = cartState?.totalAmount
   console.log(totalAmount)
+  const totalBill = cartState?.totalBill
+  console.log(totalBill)
   const listCartItem = cartState?.cart
   console.log(listCartItem)
   const userData = userInfo?.data
@@ -43,12 +48,15 @@ export default function Cart() {
   // const idUser = userInfo?.data?.id
   const dispatch = useDispatch()
 
-  useDispatch(() => {
-    dispatch(getTotalAmount())
+  useEffect(() => {
+    dispatch(getTotalBill())
   }, [listCartItem, dispatch])
 
   const handleClearCart = () => {
     dispatch(clearCart())
+    notification.success({
+      message: `Clear cart!!!`,
+    })
   }
 
   // const handleDeleteItem = (id) => {
@@ -74,6 +82,7 @@ export default function Cart() {
                     <th>Image</th>
                     <th>Title</th>
                     <th>Price</th>
+                    <th>Size</th>
                     <th>Quantity</th>
                     <th>Total</th>
                     <th>Delete</th>
@@ -99,7 +108,7 @@ export default function Cart() {
                 <div className="cart__checkout">
                   <h6 className="d-flex align-items-center justify-content-between">
                     Subtotal
-                    <span className="fs-4 fw-bold">{totalAmount}.000đ</span>
+                    <span className="fs-4 fw-bold">{totalBill}.000đ</span>
                   </h6>
                   <p className="fs-6 mt-2">
                     Taxes and shipping will calculate in checkout
@@ -125,6 +134,29 @@ export default function Cart() {
 
 const Tr = ({ item }) => {
   const dispatch = useDispatch()
+
+  console.log(item)
+
+  console.log(item.count)
+
+  console.log(item.total)
+
+  console.log(item.size.price)
+
+  const handleDeleteItem = () => {
+    dispatch(deleteCartItemAction(item.id))
+    notification.success({
+      message: `Bạn đã xóa một sản phẩm!`,
+    })
+  }
+
+  // const handleDeleteItem = (id) => {
+  //   dispatch(deleteCartItemAction(id))
+  //   notification.success({
+  //     message: `Bạn đã xóa một sản phẩm!`,
+  //   })
+  // }
+  // dispatch(removeCartAction(item.length))
 
   const handleDecreaseCart = () => {
     dispatch(decreaseCart(item))
@@ -152,6 +184,7 @@ const Tr = ({ item }) => {
       </td>
       <td>{item?.productName}</td>
       <td>{item?.size.price}.000đ</td>
+      <td>{item?.size.label}</td>
 
       <td>
         <div className="cart-product-quantity">
@@ -163,7 +196,12 @@ const Tr = ({ item }) => {
       <td>
         <div className="cart-product-total-price">{item?.total}.000đ</div>
       </td>
-      <td></td>
+      <td>
+        {' '}
+        <motion.i onClick={handleDeleteItem} whileTap={{ scale: 1.2 }}>
+          <RiDeleteBinLine />
+        </motion.i>
+      </td>
     </tr>
   )
 }

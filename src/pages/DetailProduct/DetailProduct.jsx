@@ -36,20 +36,31 @@ export default function DetailProduct() {
   console.log(productName)
   const price = location.state.price
   console.log(price)
+  // const listSize = [
+  //   { label: 'S', price: price },
+  //   { label: 'M', price: price },
+  //   { label: 'L', price: price },
+  //   { label: 'XL', price: price },
+  //   { label: 'XXL', price: price },
+  // ]
   const shortDesc = location.state.shortDesc
-  console.log(shortDesc)
+  // console.log(shortDesc)
   const description = location.state.description
-  console.log(description)
+  // console.log(description)
   const type = location.state.type
   console.log(type)
   const avgRating = location.state.avgRating
-  console.log(avgRating)
+  // console.log(avgRating)
   const total = price * count + value.price * count
-  console.log(total)
+  const size = location.state.size
+  console.log(size)
+  console.log(location.state)
+  // console.log(total)
   const reviews = location.state.reviews
-  console.log(reviews)
+  console.log(count)
+  // console.log(reviews)
 
-  const data = (state) => state.product.productState
+  // const data = (state) => state.product.productState
 
   // const products = useSelector((state) => state.product.productState)
 
@@ -77,14 +88,15 @@ export default function DetailProduct() {
   const products = location.state
   console.log(products)
 
-  const productsArr = Object.entries(products)
-  console.log(productsArr)
-  const filteredArr = productsArr.filter(function ([key, value]) {
-    console.log(key)
-    console.log(value)
+  // const productsArr = Object.entries(products)
+  // console.log(productsArr)
+  // const filteredArr = productsArr.filter(function ([key, value]) {
+  //   // console.log(key)
+  //   // console.log(value)
 
-    return key === 'type' && value === 'kidsclothing'
-  })
+  //   return key === 'type' && value === 'kidsclothing'
+  // })
+
   // const filteredArr = productsArr
 
   const [tab, setTab] = useState('desc')
@@ -93,15 +105,7 @@ export default function DetailProduct() {
 
   const [rating, setRating] = useState(null)
 
-  const handleAddToCart = (
-    image,
-    productName,
-    price,
-    total,
-    count,
-    size,
-    type,
-  ) => {
+  const handleAddToCart = (image, productName, total, count, size, type) => {
     if (value === 0) {
       notification.error({
         message: `Bạn chưa chọn size!`,
@@ -112,12 +116,15 @@ export default function DetailProduct() {
         idProduct: id,
         image: image,
         productName: productName,
-        price: price,
         type: type,
         total: total,
         count: count,
-        size: size,
+        size: {
+          label: size.label,
+          price: price,
+        },
       }
+      console.log(cartItem)
       dispatch(addToCartAction(cartItem))
     }
   }

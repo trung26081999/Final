@@ -6,7 +6,7 @@ import {
   updateUserInfoAction1,
 } from '../../../stores/slices/user.slice'
 import { useNavigate } from 'react-router-dom'
-import { clearCart } from '../../../stores/slices/cart.slice'
+// import { clearCart } from '../../../stores/slices/cart.slice'
 
 const layout = {
   labelCol: {
@@ -38,7 +38,7 @@ export default function Profile() {
   }
   const handleLogout = () => {
     dispatch(logoutAction())
-    dispatch(clearCart())
+    // dispatch(clearCart())
     navigate(`/`)
   }
 

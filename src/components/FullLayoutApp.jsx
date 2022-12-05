@@ -30,19 +30,6 @@ export function FullLayoutApp() {
           <Route path="/menclothing" element={<Header />}></Route>
           <Route path="/register" element={<Header />}></Route>
 
-          <Route path="/" element={<Footer />}></Route>
-
-          <Route path="/Login" element={<Footer />}></Route>
-          <Route path="/cart" element={<Footer />}></Route>
-          <Route path="/checkout" element={<Footer />}></Route>
-
-          <Route path="/contact" element={<Footer />}></Route>
-          <Route path="/profile" element={<Footer />}></Route>
-          <Route path="/kidsclothing" element={<Footer />}></Route>
-          <Route path="/womenshoes" element={<Footer />}></Route>
-          <Route path="/menclothing" element={<Footer />}></Route>
-          <Route path="/register" element={<Footer />}></Route>
-
           <Route path="/cart/success/:id" element={<Success />}></Route>
           <Route
             path="/order-list/detail:id"
