@@ -1,7 +1,15 @@
 import React from 'react'
-import { Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
+import { Col, Container, ListGroup, ListGroupItem, Row } from 'reactstrap'
 import './FooterContent.scss'
-import { RiMailLine, RiMapPinLine, RiPhoneLine } from 'react-icons/ri'
+import {
+  RiFacebookLine,
+  RiInstagramLine,
+  RiMailLine,
+  RiMapPinLine,
+  RiPhoneLine,
+  RiTwitterLine,
+  RiYoutubeLine,
+} from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -30,16 +38,16 @@ const Footer = () => {
                 <h4 className="quick__links-title">Top Categories</h4>
                 <ListGroup>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="#">Modern Skirt</Link>
+                    <Link to="/">All Products</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="#">Modern Short</Link>
+                    <Link to="/kidsclothing">Kids Clothings</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="#">Modern Short</Link>
+                    <Link to="womenshoes">Women Shoes</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="#">Modern Jean</Link>
+                    <Link to="/menclothing">Men Clothing</Link>
                   </ListGroupItem>
                 </ListGroup>
               </div>
@@ -49,13 +57,16 @@ const Footer = () => {
                 <h4 className="quick__links-title">Useful Links</h4>
                 <ListGroup>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="/shop">Shop</Link>
+                    <Link to="/about">About US</Link>
+                  </ListGroupItem>
+                  <ListGroupItem className="ps-0 border-0">
+                    <Link to="/contact">Contact US</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
                     <Link to="/cart">Cart</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="/login">Login</Link>
+                    <Link to="/Login">Login</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
                     <Link to="#">Privacy Policy</Link>
@@ -63,7 +74,7 @@ const Footer = () => {
                 </ListGroup>
               </div>
             </Col>
-            <Col lg="3" md="4">
+            <Col lg="3" md="4" className="mb-4">
               <div className="footer__quick-links">
                 <h4 className="quick__links-title">Contact</h4>
                 <ListGroup className="footer__contact">
@@ -90,6 +101,52 @@ const Footer = () => {
                       </i>
                     </span>
                     <p>thoangtran20@gmail.com</p>
+                  </ListGroupItem>
+                </ListGroup>
+              </div>
+            </Col>
+
+            <Col lg="12" md="4" className="mb-4">
+              <div className="footer__social-links">
+                <ListGroup className="footer__social">
+                  <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
+                    <a
+                      href="https://www.facebook.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i>
+                        <RiFacebookLine />
+                      </i>
+                    </a>
+
+                    <a
+                      href="https://twitter.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i>
+                        <RiTwitterLine />
+                      </i>
+                    </a>
+                    <a
+                      href="https://www.youtube.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i>
+                        <RiYoutubeLine />
+                      </i>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i>
+                        <RiInstagramLine />
+                      </i>
+                    </a>
                   </ListGroupItem>
                 </ListGroup>
               </div>
