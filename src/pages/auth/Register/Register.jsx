@@ -58,6 +58,7 @@ export default function Register() {
 
   useEffect(() => {
     register("email", { required: true });
+    register("name", { required: true });
     register("password", { required: true });
     register("confirmPassword", { required: true });
   }, [register]);
@@ -97,6 +98,32 @@ export default function Register() {
                       value={value}
                       name={name}
                       placeholder="Email"
+                      ref={ref}
+                    />
+                  </Form.Item>
+                )}
+              />
+              <Controller
+                control={control}
+                name="name"
+                render={({ field: { onChange, value, name, ref } }) => (
+                  <Form.Item
+                    validateStatus={errors.email && "error"}
+                    help={errors?.email?.message}
+                    name={["name"]}
+                    label="Name"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                  >
+                    <Input
+                      style={{ width: "400px" }}
+                      onChange={onChange}
+                      value={value}
+                      name={name}
+                      placeholder="Name"
                       ref={ref}
                     />
                   </Form.Item>

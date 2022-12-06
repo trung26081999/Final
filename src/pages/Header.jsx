@@ -2,13 +2,14 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import NavBarLayout from "../components/layouts/NavbarUser-Layout/NabarLayout";
 import Cart from "./auth/Cart/Cart";
+import Checkout from "./auth/Cart/Checkout";
 import Login from "./auth/Login/Login";
 import Profile from "./auth/Profile/Profile";
 import Register from "./auth/Register/Register";
 import HomePage from "./HomePage/HomePage";
 import AllProducts from "./HomePage/products/product-list/AllProducts";
-import Contact from './Contact/Contact';
-import About from './About/About';
+import Contact from "./Contact/Contact";
+import About from "./About/About";
 
 export default function Header(props) {
   const location = useLocation();
@@ -21,6 +22,8 @@ export default function Header(props) {
         return <Login />;
       case "/cart":
         return <Cart />;
+      case "/checkout":
+        return <Checkout />;
       case "/contact":
         return <Contact />;
       case "/introduce":
@@ -32,7 +35,7 @@ export default function Header(props) {
         return <AllProducts />;
       case "/register":
         return <Register />;
-      
+
       default:
         return <HomePage />;
     }

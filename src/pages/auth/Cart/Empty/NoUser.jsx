@@ -17,7 +17,7 @@ export default function NoUser() {
       </span>
     }
   >
-    <Button onClick={() => navigate(`/login`)} type="primary">Bấm vào đây để đăng nhập</Button>
+    <Button onClick={() => navigate(`/Login`)} type="primary">Bấm vào đây để đăng nhập</Button>
   </Empty>
         </div>
     )

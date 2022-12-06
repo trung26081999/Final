@@ -300,15 +300,17 @@ function Products() {
               </p>
               <p className="label-input">
                 <label className="select-img" for="input-img">
-                  Select File:
+                  Select File: 
                 </label>
                 <input
                   id="input-img"
-                  hidden
+                  // hidden
+                  className="input-product"
                   type="file"
                   name="myImage"
+
                   onChange={handleOnchangeFile}
-                  placeholder=""
+                  placeholder="Choose img"
                 />
                 {selectImg && <img className="image" src={selectImg} />}
               </p>

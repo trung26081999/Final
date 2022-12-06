@@ -1,134 +1,207 @@
-import React, { useState } from 'react';
-import { Button, notification} from 'antd';
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { deleteCartItemAction, getTotalBill, paymentAction, removeCartAction } from '../../../stores/slices/cart.slice';
-import { v4 } from 'uuid';
-import EmptyComp from './Empty/Empty';
-import NoUser from './Empty/NoUser';
+import { notification } from "antd";
+import React from "react";
+import { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { RiDeleteBinLine } from "react-icons/ri";
 
+import "./cart.scss";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  clearCart,
+  decreaseCart,
+  deleteCartItemAction,
+  getTotalBill,
+  increaseCart,
+  removeCartAction,
+} from "../../../stores/slices/cart.slice";
+import EmptyComp from "./Empty/Empty";
+import NoUser from "./Empty/NoUser";
+import { useEffect } from "react";
 
 export default function Cart() {
-    const userInfo = useSelector(state => state.user.userInfoState);
-    const cartState = useSelector(state => state.cart.cartState)
-    
-    
-    const totalBill = cartState.totalBill
-    const listCartItem = cartState?.cart
-    const idUser = userInfo?.data?.id
-    const current = new Date()
-    let month = current.getMonth() +1
-    if(month < 10) { month = `0${month}`};
-    let day = current.getDate()
-    if(day < 10) { day = `0${day}`};
-    const date = `${current.getFullYear()}-${month}-${day}`;
-    
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const [infoOrder, setInfoOrder] = useState({
-        name: '', phone: '', address: '', status: 'Chờ xác nhận'
-    })
+  const navigate = useNavigate();
+  const userInfo = useSelector((state) => state.user.userInfoState);
+  console.log(userInfo);
+  const cartState = useSelector((state) => state.cart.cartState);
 
-    useEffect(() => {
-        dispatch(getTotalBill())
-    }, [listCartItem])
+  console.log(cartState);
+  console.log(cartState);
+  const totalAmount = cartState?.totalAmount;
+  console.log(totalAmount);
+  const totalBill = cartState?.totalBill;
+  console.log(totalBill);
+  const listCartItem = cartState?.cart;
+  console.log(listCartItem);
+  const userData = userInfo?.data;
+  console.log(userData);
 
-    const handleDeleteItem = (id) => {
-        dispatch(deleteCartItemAction(id))
-        notification.success({
-            message: `Bạn đã xóa một sản phẩm!`,
-        });
-    }
-    
-    const handleSubmitPayment = () => {
-        if(!infoOrder.name || !infoOrder.phone || !infoOrder.address){
-            return notification.error({
-                message: `Vui lòng nhập đầy đủ thông tin!`,
-            });
-        }
-        let newOnlPayment = {
-            id: v4(),
-            userId: idUser,
-            userName: infoOrder.name,
-            phone: infoOrder.phone,
-            address: infoOrder.address,
-            totalBill: totalBill,
-            status: infoOrder.status,
-            date: date,
-            listProductOrder:[
-                ...cartState.cart
-            ]
-        }
-        dispatch(paymentAction(newOnlPayment))
-        dispatch(removeCartAction(cartState.cart.length))
-        navigate(`/cart/success/${newOnlPayment.id}`)
-    }
-    
-    if(!userInfo?.data) return <NoUser/>
-    if(listCartItem.length === 0) return <EmptyComp/>
+  // const productCart = listCartItem?.filter(
+  //   (item) => item?.userEmail === userData?.email,
+  // )
 
+  // const productsPrice = productCart?.reduce(
+  //   (prev, current) => prev + current.quantity * current.price,
+  //   0,
+  // )
+  // const idUser = userInfo?.data?.id
+  const dispatch = useDispatch();
 
-    return (
-        <>
-            <div className='cart'>
-            <h1>Xác Nhập đơn hàng</h1>
-            <div className="order">
-                <div className="info__member">
-                    <h2>Giao hàng</h2>
-                    <input type="text" placeholder='Thêm họ và tên' onChange={e => setInfoOrder({
-                        ...infoOrder,
-                        name: e.target.value
-                    })} />
-                    <input type="number" placeholder='Thêm số điện thoại' onChange={e => setInfoOrder({
-                        ...infoOrder,
-                        phone: e.target.value
-                    })} />
-                    <input type="text" placeholder='Thêm Địa Chỉ' onChange={e => setInfoOrder({
-                        ...infoOrder,
-                        address: e.target.value
-                    })} />
+  useEffect(() => {
+    dispatch(getTotalBill());
+  }, [listCartItem, dispatch]);
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+    notification.success({
+      message: `Clear cart!!!`,
+    });
+  };
+
+  // const handleDeleteItem = (id) => {
+  //   dispatch(deleteCartItemAction(id))
+  //   notification.success({
+  //     message: `Bạn đã xóa một sản phẩm!`,
+  //   })
+  // }
+  // dispatch(removeCartAction(cartState.cart.length))
+
+  if (!userInfo?.data) return <NoUser />;
+  if (listCartItem?.length === 0) return <EmptyComp />;
+
+  return (
+    <>
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12">
+              <table className="table bordered">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {listCartItem?.map((item, index) => {
+                    return <Tr item={item} key={index} />;
+                  })}
+                </tbody>
+              </table>
+            </Col>
+
+            <Col lg="12" className=" ">
+              <div className="cart__summary">
+                <button
+                  className="clear__btn"
+                  onClick={() => handleClearCart()}
+                >
+                  Clear Cart
+                </button>
+                <div className="cart__checkout">
+                  <h6 className="d-flex align-items-center justify-content-between">
+                    Subtotal
+                    <span className="fs-4 fw-bold">{totalBill}.000đ</span>
+                  </h6>
+                  <p className="fs-6 mt-2">
+                    Taxes and shipping will calculate in checkout
+                  </p>
+                  <div>
+                    <button className="buy__btn w-100">
+                      <Link to="/checkout">Checkout</Link>
+                    </button>
+
+                    <button className="buy__btn w-100 mt-3">
+                      <Link to="/">Continue Shopping</Link>
+                    </button>
+                  </div>
                 </div>
-                <div className="order__product">
-                    <h2>Sản phẩm đã chọn</h2>
-                    {listCartItem?.map?.((item) => {
-                        return (
-                            <div key={item.id} className="select__product">
-                                <div className="img">
-                                    <img src={item.image} alt="OT" />
-                                </div>
-                                <div className="info">
-                                    <b><span>{item.count}</span> x {item.productName}</b>
-                                    <p>Size <span>{item.size.label}</span></p>
-                                    <b onClick={() => handleDeleteItem(item.id)}>Xóa</b>
-                                </div>
-                                <div className="price">
-                                    <span>{item.total}.000đ</span>
-                                </div>
-                            </div>
-                        )
-                    })}
-
-                    <h2>Tổng cộng</h2>
-                    <div className="total">
-                        <span>thành tiền</span>
-                        <span>{totalBill}.000đ</span>
-                    </div>
-                    {/* <div className="transport__fee">
-                        <span>Phí vận chuyển</span>
-                        <span>10.000đ</span>
-                    </div> */}
-                    <div className="payment">
-                        <div className="bill">
-                            <p>Đơn hàng: <span>{totalBill}.000đ</span></p>
-                        </div>
-                        <div className="payment__btn">
-                            <Button onClick={() => handleSubmitPayment()}>Đặt Hàng</Button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </>
-    )
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </>
+  );
 }
+
+const Tr = ({ item }) => {
+  const dispatch = useDispatch();
+
+  console.log(item);
+
+  console.log(item.count);
+
+  console.log(item.total);
+
+  console.log(item.size.price);
+
+  const handleDeleteItem = () => {
+    dispatch(deleteCartItemAction(item.id));
+    notification.success({
+      message: `Bạn đã xóa một sản phẩm!`,
+    });
+  };
+
+  // const handleDeleteItem = (id) => {
+  //   dispatch(deleteCartItemAction(id))
+  //   notification.success({
+  //     message: `Bạn đã xóa một sản phẩm!`,
+  //   })
+  // }
+  // dispatch(removeCartAction(item.length))
+
+  const handleDecreaseCart = () => {
+    dispatch(decreaseCart(item));
+  };
+  const handleIncreaseCart = () => {
+    dispatch(increaseCart(item));
+  };
+
+  // const deleteProduct = () => {
+  //   dispatch(cartActions.deleteItem(item.id))
+  // }
+
+  // const handleDecreaseCart = () => {
+  //   dispatch(cartActions.decreaseCart(item))
+  // }
+
+  // const handleAddToCart = () => {
+  //   dispatch(cartActions.addItem(item))
+  // }
+
+  return (
+    <tr>
+      <td>
+        <img src={item?.image} alt="" />
+      </td>
+      <td>{item?.productName}</td>
+      <td>{item?.size.price}.000đ</td>
+      <td>{item?.size.label}</td>
+
+      <td>
+        <div className="cart-product-quantity">
+          <button onClick={handleDecreaseCart}>-</button>
+          <div className="count">{item?.count}</div>
+          <button onClick={handleIncreaseCart}>+</button>
+        </div>{" "}
+      </td>
+      <td>
+        <div className="cart-product-total-price">{item?.total}.000đ</div>
+      </td>
+      <td>
+        {" "}
+        <motion.i onClick={handleDeleteItem} whileTap={{ scale: 1.2 }}>
+          <RiDeleteBinLine />
+        </motion.i>
+      </td>
+    </tr>
+  );
+};

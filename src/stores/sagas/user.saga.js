@@ -24,6 +24,7 @@ function* login(action) {
         const loginPayload = action.payload
         const response = yield AuthAPI.login({
             email: loginPayload.email,
+            name: loginPayload.name,
             password: loginPayload.password,
         });
         yield put(loginActionSuccess(response.data.user));
@@ -37,6 +38,7 @@ function* register(action) {
         const registerPayload = action.payload
         const response = yield AuthAPI.register({
             email: registerPayload.email,
+            name: registerPayload.name,
             password: registerPayload.password,
         });
         yield put(registerActionSuccess(response.data.user));

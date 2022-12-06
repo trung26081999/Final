@@ -19,10 +19,10 @@ const Container2 = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: calc(20% - 30px);
-  border: 1px solid #ddd;
-  margin: 5px;
-  height: 100%;
+border: 1px solid #ddd;
+margin: 20px;
+height: 100%;
+cursor: pointer;
 `;
 
 const ImgContainer = styled.div`
@@ -109,14 +109,14 @@ export default function ListProduct() {
         ))}
       </Container2>
       <div className="loading">{loading && <LoadingOutlined />}</div>
-      <div className="pagination">
+      {/* <div className="pagination">
         <Pagination
           onChange={onPaginationChange}
           pageSize={+_limit}
           current={+_page}
           total={total}
         />
-      </div>
+      </div> */}
     </>
   );
 }

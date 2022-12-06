@@ -18,10 +18,10 @@ const data = [
   { name: "June", Total: 800 },
   { name: "july", Total: 3000 },
   { name: "August", Total: 3000 },
-  { name: "September ", Total: "" },
-  { name: "October  ", Total: "" },
-  { name: "November  ", Total: "" },
-  { name: "December  ", Total: "" },
+  { name: "September ", Total: "1200" },
+  { name: "October  ", Total: "3000" },
+  { name: "November  ", Total: "1500" },
+  { name: "December  ", Total: "1900" },
 ];
 function Chart() {
   return (
