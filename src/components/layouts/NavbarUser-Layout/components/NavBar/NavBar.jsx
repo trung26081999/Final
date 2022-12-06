@@ -5,14 +5,21 @@ import { BiCartAlt, BiUserCircle } from 'react-icons/bi'
 import { GrUserAdmin } from 'react-icons/gr'
 import { BsSearch } from 'react-icons/bs'
 import { category } from './category'
-import { Button, Drawer, Dropdown, Menu, Space, Badge } from 'antd'
+import { Button, Drawer, Dropdown, Menu, Space, Badge, Modal } from 'antd'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getTotalItem } from '../../../../../stores/slices/cart.slice'
+import {
+  clearCart,
+  getTotalItem,
+} from '../../../../../stores/slices/cart.slice'
 import { searchProductAction } from '../../../../../stores/slices/product.slice'
 
 import styled from 'styled-components'
+import {
+  loginAction,
+  logoutAction,
+} from '../../../../../stores/slices/user.slice'
 
 const Container = styled.div`
   width: 100%;
@@ -112,46 +119,6 @@ const unauthenticatedMenu = [
   },
 ]
 
-const authenticatedMenu = [
-  {
-    key: '2',
-    label: (
-      <NavLink to={'/profile'}>
-        <p target="_blank" rel="noopener noreferrer">
-          Thông tin tài khoản
-        </p>
-      </NavLink>
-    ),
-  },
-  {
-    key: '3',
-    label: (
-      <NavLink to={'/order-list/confirm'}>
-        <p target="_blank" rel="noopener noreferrer">
-          Lịch sử mua hàng
-        </p>
-      </NavLink>
-    ),
-  },
-]
-
-const urlDashboard = (
-  <>
-    <Button
-      style={{
-        fontSize: '28px',
-        background: 'none',
-        border: 'none',
-        color: 'black',
-      }}
-    >
-      <NavLink to={'/dashboard'}>
-        <GrUserAdmin />
-      </NavLink>
-    </Button>
-  </>
-)
-
 export default function NavBar() {
   const userInfo = useSelector((state) => state.user.userInfoState)
   const productState = useSelector((state) => state.product.productState)
@@ -167,6 +134,81 @@ export default function NavBar() {
   const [visible, setVisible] = useState(false)
   const [menuList, setMenuList] = useState([])
   const [urlAdmin, setUrlAmin] = useState()
+
+  const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false)
+
+  const handleLogout = () => {
+    dispatch(logoutAction())
+    dispatch(clearCart())
+  }
+
+  const authenticatedMenu = [
+    // <Modal
+    //   title="Basic Modal"
+    //   open={showConfirmDeleteModal}
+    //   onOk={() => {
+    //     handleLogout()
+    //   }}
+    //   onCancel={() => {
+    //     setShowConfirmDeleteModal(false)
+    //   }}
+    // >
+    //   <p>Do you sure want to log out of the website?</p>
+    // </Modal>,
+
+    {
+      key: '2',
+      label: (
+        <NavLink to={'/profile'}>
+          <p target="_blank" rel="noopener noreferrer">
+            Thông tin tài khoản
+          </p>
+        </NavLink>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <NavLink to={'/order-list/confirm'}>
+          <p target="_blank" rel="noopener noreferrer">
+            Lịch sử mua hàng
+          </p>
+        </NavLink>
+      ),
+    },
+    {
+      key: '4',
+
+      label: (
+        <p
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            handleLogout()
+          }}
+        >
+          Đăng xuất
+        </p>
+      ),
+    },
+  ]
+
+  const urlDashboard = (
+    <>
+      <Button
+        style={{
+          fontSize: '28px',
+          background: 'none',
+          border: 'none',
+          color: 'black',
+        }}
+      >
+        <NavLink to={'/dashboard'}>
+          <GrUserAdmin />
+        </NavLink>
+      </Button>
+    </>
+  )
 
   const navigateToHome = () => {
     navigate('/')

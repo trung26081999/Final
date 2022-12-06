@@ -59,6 +59,10 @@
 	color: white;
 	border-radius: 20px;
 }
+.product__detail .options__product > button a {
+	text-decoration: none;
+	color: unset
+}
 
 .product__detail .product__rating .start {
 	margin-bottom: 15px;
