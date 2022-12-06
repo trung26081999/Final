@@ -1,11 +1,12 @@
+/** @format */
+
 .item__detail {
 	display: flex;
+	margin-top: 80px;
 	justify-content: center;
 	align-items: center;
-	height: 800px;
-	margin-top: 100px;
+	height: 850px;
 }
-
 .item__detail .product__detail {
 	display: flex;
 	width: 800px;
@@ -15,55 +16,151 @@
 	box-shadow: 0 0 10px 0.1px #333;
 	margin-bottom: 100px;
 }
-
 .product__detail .img__product img {
 	width: 330px;
 	height: 380px;
 	margin-right: 25px;
 	object-fit: cover;
 }
-
 .product__detail .img__product .description__product {
 	width: 330px;
-	padding: 10px;
+	padding: 20px;
 	margin-bottom: -10px;
 }
-
 .product__detail .options__product .option__quantity {
 	float: right;
 }
-
 .product__detail .options__product .option__quantity .desc,
 .asc {
 	border: none;
 }
-
 .product__detail .options__product .option__quantity span {
 	margin-left: 10px;
 	margin-right: 10px;
 }
-
 .product__detail .options__product .option__size {
 	margin-top: 25px;
-	border: 1px solid #E4DCCF;
+	border: 1px solid #e4dccf;
 	border-radius: 5px 5px 0 0;
 }
-
 .product__detail .options__product .option__size p {
-	background-color: #F0EBE3;
+	background-color: #f0ebe3;
 	padding: 5px 15px;
 }
-
 .product__detail .options__product .option__size .type__size {
 	padding: 10px;
 }
-
-.product__detail .options__product>button {
+.product__detail .options__product > button {
 	border: none;
 	padding: 10px 60px;
-	margin-top: 100px;
+	margin-top: 50px;
 	margin-left: 40px;
-	background-color: #FFA500;
+	background-color: #ffa500;
 	color: white;
 	border-radius: 20px;
+}
+.product__detail .options__product > button a {
+	text-decoration: none;
+	color: unset
+}
+
+.product__detail .product__rating .start {
+	margin-bottom: 15px;
+}
+
+.product__detail .product__rating .start span i {
+	color: #fd841f;
+	margin-top: 30px;
+}
+
+.product__detail .product__rating p span {
+	color: #fd841f;
+	font-weight: 500;
+}
+
+.tab__wrapper {
+	color: var(--primary-color);
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+.active__tab {
+	font-weight: 600;
+}
+
+.tab__content p {
+	line-height: 30px;
+}
+
+.product__review .review__wrapper ul li span {
+	color: #fd841f;
+	font-weight: 600;
+}
+
+.product__review .review__wrapperul li p {
+	margin-top: 10px;
+}
+
+.product__review .review__form {
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.product__review .review__form h4 {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.product__review .review__form form .form__group {
+	margin-bottom: 30px;
+}
+
+.product__review .review__form form .form__group input,
+textarea {
+	width: 100%;
+	border: 1px solid var(--primary-color);
+	border-radius: 5px;
+	padding: 8px 20px;
+}
+
+.product__review .review__form form .form__group input:focus,
+textarea:focus {
+	outline: none;
+}
+
+.product__review .review__form form .form__group span {
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+	color: #fd841f;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.btn__submit {
+	border: none;
+	outline: none;
+	padding: 8px 20px;
+	border-radius: 5px;
+	background-color: #25316d;
+	color: #fff;
+	cursor: pointer;
+	font-weight: 400;
+}
+
+.btn__submit a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.btn__submit a:hover {
+	color: #fff;
+}
+
+.related__title {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin-top: 30px;
 }

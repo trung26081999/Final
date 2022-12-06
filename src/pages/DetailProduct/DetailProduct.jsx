@@ -2,7 +2,7 @@ import React from 'react'
 import { notification, Radio, Button } from 'antd'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useLocation, useParams ,Link} from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCartAction } from '../../stores/slices/cart.slice'
@@ -28,7 +28,9 @@ export default function DetailProduct() {
   const [value, setValue] = useState(0)
   const [count, setCount] = useState(1)
   const location = useLocation()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const { id } = useParams()
   const image = location.state.image
   const productName = location.state.productName
@@ -80,6 +82,10 @@ export default function DetailProduct() {
 
   const onChange = (e) => {
     setValue(e.target.value)
+  }
+
+  const gotoCart = () => {
+    navigate('/cart')
   }
 
   console.log(location.state)
@@ -223,18 +229,12 @@ export default function DetailProduct() {
             </div>
             <motion.button
               whileTap={{ scale: 1.2 }}
-              
               onClick={() =>
                 handleAddToCart(image, productName, total, count, value, type)
               }
-              
             >
-              <Link to='/cart'>
-
-              Thêm vào giỏ hàng - {total}.000đ
-              </Link>
+              <Link to="/cart"> Thêm vào giỏ hàng - {total}.000đ</Link>
             </motion.button>
-            
           </div>
         </div>
       </div>

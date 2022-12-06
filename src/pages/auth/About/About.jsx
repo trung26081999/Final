@@ -1,19 +1,19 @@
-import React from 'react'
-import './About.scss'
-import bannerGirl from '../../assets/1000_F_236259457_2RhF2UrlQFwNxJ255egyGfMTdCbj0Yts.jpg'
-import ava1 from '../../assets/avatar1.jpg'
-import ava2 from '../../assets/avatar2.jpg'
-import ava3 from '../../assets/avatar3.jpg'
+import React from "react";
+import "./About.scss";
+import bannerGirl from "../../assets/1000_F_236259457_2RhF2UrlQFwNxJ255egyGfMTdCbj0Yts.jpg";
+import ava1 from "../../assets/avatar1.jpg";
+import ava2 from "../../assets/avatar2.jpg";
+import ava3 from "../../assets/avatar3.jpg";
 
-import bannerMen from '../../assets/fashion-model-pose-in-casual-mens-wear-touching-unshaven-beard-isolated-on-white-fashionist-2JAM208.jpg'
-import bannerWomen from '../../assets/400_F_462946321_JFT5Z1FSZAeifqxWQGjVUXrWgfmrmOHj.jpg'
-import { Col, Container, Row } from 'react-bootstrap'
+import bannerMen from "../../assets/fashion-model-pose-in-casual-mens-wear-touching-unshaven-beard-isolated-on-white-fashionist-2JAM208.jpg";
+import bannerWomen from "../../assets/400_F_462946321_JFT5Z1FSZAeifqxWQGjVUXrWgfmrmOHj.jpg";
+import { Col, Container, Row } from "react-bootstrap";
 import {
   FaFacebookF,
   FaInstagram,
   FaLongArrowAltRight,
   FaTwitter,
-} from 'react-icons/fa'
+} from "react-icons/fa";
 
 const About = () => {
   return (
@@ -287,7 +287,7 @@ const About = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default About
+export default About;
