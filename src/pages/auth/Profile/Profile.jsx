@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutAction, updateUserInfoAction1,  } from '../../../stores/slices/user.slice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const layout = {
    labelCol: {
@@ -119,9 +119,12 @@ export default function Profile() {
                         <Button type="primary" htmlType="submit">
                            Cập nhật
                         </Button>
-                        <button onClick={handleLogout} className='btn__logout' type="primary" htmlType="submit">
+
+                        <Link to="/">
+                        <button className='btn__logout' type="primary" htmlType="submit">
                            Thoát
                         </button>
+                        </Link>
                      </Form.Item>
                   </Form>
                </div>
