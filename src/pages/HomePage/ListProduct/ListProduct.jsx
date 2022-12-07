@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   fetchProductAction,
   PRODUCT_LIMIT,
-} from "../../../stores/slices/product.slice";
-import { Pagination } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import styled from "styled-components";
+} from '../../../stores/slices/product.slice'
+import { Pagination } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
+import styled from 'styled-components'
 
 const Container2 = styled.div`
   width: 100%;
@@ -16,19 +16,19 @@ const Container2 = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 200px;
-`;
+`
 
 const Wrapper = styled.div`
   width: calc(20% - 30px);
   border: 1px solid #ddd;
   margin: 5px;
   height: 100%;
-`;
+`
 
 const ImgContainer = styled.div`
   position: relative;
   cursor: pointer;
-`;
+`
 
 const Image = styled.img`
   width: 100%;
@@ -36,57 +36,57 @@ const Image = styled.img`
   object-fit: cover;
   object-position: center;
   transition: 0.5s;
-`;
+`
 
 const InfoContainer = styled.div`
   color: #e0e3db;
-`;
+`
 
 const Title = styled.h1`
   color: #000;
   font-size: 14px;
   font-weight: 500;
-`;
+`
 
 const H2 = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #000;
   margin-top: 25px;
-`;
+`
 
 const Price = styled.p`
   font-size: 16px;
   color: #ff652e;
   font-weight: bold;
-`;
+`
 
-export default function ListProduct() {
-  const productState = useSelector((state) => state.product.productState);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  let [searchParams, setSearchParams] = useSearchParams();
+export default function ListProduct({ data }) {
+  const productState = useSelector((state) => state.product.productState)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  let [searchParams, setSearchParams] = useSearchParams()
 
-  const total = productState?.pagination?.total;
-  const loading = productState?.loading;
+  const total = productState?.pagination?.total
+  const loading = productState?.loading
 
-  const defaultPage = 1;
+  const defaultPage = 1
 
-  const _page = searchParams.get("page") ?? `${defaultPage}`;
-  const _limit = searchParams.get("limit") ?? `${PRODUCT_LIMIT}`;
+  const _page = searchParams.get('page') ?? `${defaultPage}`
+  const _limit = searchParams.get('limit') ?? `${PRODUCT_LIMIT}`
 
   useEffect(() => {
-    dispatch(fetchProductAction({ page: _page, limit: _limit }));
-  }, [dispatch, _page, _limit]);
+    dispatch(fetchProductAction({ page: _page, limit: _limit }))
+  }, [dispatch, _page, _limit])
 
   const onPaginationChange = (page, limit) => {
     // dispatch(fetchProductAction(page))
-    setSearchParams({ page, limit });
-  };
+    setSearchParams({ page, limit })
+  }
 
   const handleDetail = (item) => {
-    navigate(`/product-detail/${item.id}`, { state: { ...item } });
-  };
+    navigate(`/product-detail/${item.id}`, { state: { ...item } })
+  }
 
   return (
     <>
@@ -118,5 +118,5 @@ export default function ListProduct() {
         />
       </div>
     </>
-  );
+  )
 }

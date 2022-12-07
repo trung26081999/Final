@@ -1,12 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { notification } from "antd";
+import { createSlice } from '@reduxjs/toolkit'
+import { notification } from 'antd'
 
-export const PRODUCT_LIMIT = 10;
+export const PRODUCT_LIMIT = 10
+
+export const CATEGORY_ITEM_KEY = 'CATEGORY_ITEM'
+
+const categoryStorage = localStorage?.getItem(CATEGORY_ITEM_KEY)
+  ? JSON.parse(localStorage?.getItem(CATEGORY_ITEM_KEY))
+  : []
 
 const initialState = {
   productState: {
     data: [],
-    category: [],
+    category: categoryStorage,
     loading: false,
     error: null,
     search: [],
@@ -17,14 +23,14 @@ const initialState = {
       totalPage: null,
     },
   },
-};
+}
 
 const productSlice = createSlice({
-  name: "product",
+  name: 'product',
   initialState,
   reducers: {
     fetchProductAction: (state, action) => {
-      const page = action.payload;
+      const page = action.payload
       state.productState = {
         ...state.productState,
         loading: true,
@@ -32,10 +38,10 @@ const productSlice = createSlice({
           ...state.productState.pagination,
           page: page,
         },
-      };
+      }
     },
     fetchProductActionSuccess: (state, action) => {
-      const { data, totalProduct } = action.payload;
+      const { data, totalProduct } = action.payload
       state.productState = {
         ...state.productState,
         data,
@@ -45,50 +51,51 @@ const productSlice = createSlice({
           total: +totalProduct,
           totalPage: totalProduct / PRODUCT_LIMIT,
         },
-      };
+      }
     },
     fetchProductActionError: (state, action) => {
-      notification.error(action.payload);
+      notification.error(action.payload)
     },
 
     searchProductAction: (state, action) => {
-      const search = action.payload;
+      const search = action.payload
       state.productState = {
         ...state.productState,
         search: search,
         loading: true,
-      };
+      }
     },
     searchProductActionSuccess: (state, action) => {
-      const { search } = action.payload;
+      const { search } = action.payload
       state.productState = {
         ...state.productState,
         search,
         loading: false,
-      };
+      }
     },
     searchProductActionFailed: (state, action) => {
-      notification.error(action.payload);
+      notification.error(action.payload)
     },
     fetchCategoryAction: (state, action) => {
       state.productState = {
         ...state.cartState,
         loading: true,
-      };
+      }
     },
     fetchCategoryActionSuccess: (state, action) => {
-      const { category } = action.payload;
+      const { category } = action.payload
+      localStorage.setItem(CATEGORY_ITEM_KEY, JSON.stringify(category))
       state.productState = {
         ...state.cartState,
         category: category,
         loading: false,
-      };
+      }
     },
     fetchCategoryActionError: (state, action) => {
-      notification.error(action.payload);
+      notification.error(action.payload)
     },
   },
-});
+})
 
 export const {
   fetchProductAction,
@@ -101,5 +108,5 @@ export const {
   fetchCategoryAction,
   fetchCategoryActionSuccess,
   fetchCategoryActionError,
-} = productSlice.actions;
-export const productReducer = productSlice.reducer;
+} = productSlice.actions
+export const productReducer = productSlice.reducer

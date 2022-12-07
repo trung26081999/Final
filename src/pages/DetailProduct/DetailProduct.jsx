@@ -13,8 +13,63 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useRef } from 'react'
 import { toast } from 'react-toastify'
 import ListProduct from '../HomePage/ListProduct/ListProduct'
+import styled from 'styled-components'
 
 const ButtonGroup = Button.Group
+
+const Container2 = styled.div`
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+
+const Wrapper = styled.div`
+  border: 1px solid #ddd;
+  margin: 20px;
+  height: 100%;
+  cursor: pointer;
+`
+
+const ImgContainer = styled.div`
+  position: relative;
+  cursor: pointer;
+`
+
+const Image = styled.img`
+  width: 100%;
+  position: relative;
+  padding: 20px 10px;
+`
+
+const InfoContainer = styled.div`
+  color: #e0e3db;
+`
+
+const Title = styled.h1`
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+`
+
+const H2 = styled.p`
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 25px;
+`
+
+const P = styled.h1`
+  font-size: 14px;
+  font-weight: normal;
+  color: #000;
+`
+const Price = styled.p`
+  font-size: 16px;
+  color: #ff652e;
+  font-weight: bold;
+`
 
 const listSize = [
   { label: 'S', price: 0 },
@@ -37,6 +92,7 @@ export default function DetailProduct() {
   console.log(productName)
   const price = location.state.price
   console.log(price)
+
   // const listSize = [
   //   { label: 'S', price: price },
   //   { label: 'M', price: price },
@@ -59,6 +115,16 @@ export default function DetailProduct() {
   // console.log(total)
   const reviews = location.state.reviews
   console.log(count)
+
+  const productState = useSelector((state) => state.product.productState)
+  console.log(productState)
+
+  const category = productState?.category
+  console.log(category)
+
+  const data = productState?.data
+  console.log(data)
+
   // console.log(reviews)
 
   // const data = (state) => state.product.productState
@@ -66,6 +132,10 @@ export default function DetailProduct() {
   // const products = useSelector((state) => state.product.productState)
 
   // console.log(products)
+
+  const relatedProducts = category.filter((item) => item.type === type)
+
+  console.log(relatedProducts)
 
   const increase = () => {
     setCount(count + 1)
@@ -86,6 +156,10 @@ export default function DetailProduct() {
 
   const gotoCart = () => {
     navigate('/cart')
+  }
+
+  const handleDetail = (item) => {
+    navigate(`/product-detail/${item.id}`, { state: { ...item } })
   }
 
   console.log(location.state)
@@ -239,7 +313,7 @@ export default function DetailProduct() {
         </div>
       </div>
 
-      <section>
+      <section className="tab__content">
         <Container>
           <Row>
             <Col lg="12">
@@ -359,7 +433,31 @@ export default function DetailProduct() {
               <h2 className="related__title">You might also like</h2>
             </Col>
 
-            {/* <ListProduct data={filteredArr} /> */}
+            <Col lg="12">
+              <Container2>
+                {' '}
+                {relatedProducts?.map((item) => {
+                  return (
+                    <Wrapper>
+                      <div
+                        onClick={() => handleDetail(item)}
+                        key={item.id}
+                        className="item__category"
+                      >
+                        <ImgContainer>
+                          <InfoContainer>
+                            <Image src={item.image} alt="" />
+                          </InfoContainer>
+
+                          <Title>{item.productName}</Title>
+                          <Price>{item.price}.000đ</Price>
+                        </ImgContainer>
+                      </div>
+                    </Wrapper>
+                  )
+                })}
+              </Container2>
+            </Col>
           </Row>
         </Container>
       </section>
