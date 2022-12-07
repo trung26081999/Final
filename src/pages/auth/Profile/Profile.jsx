@@ -36,10 +36,8 @@ export default function Profile() {
     const value = e.target.value
     setNewTodoValue({ ...newTodoValue, [e.target.name]: value })
   }
-  const handleLogout = () => {
-    dispatch(logoutAction())
-    dispatch(clearCart())
-    navigate(`/`)
+  const gotoHome = () => {
+    navigate('/')
   }
 
   const onFinish = (values) => {
@@ -133,7 +131,7 @@ export default function Profile() {
                   Cập nhật
                 </Button>
                 <button
-                  onClick={handleLogout}
+                  onClick={gotoHome}
                   className="btn__logout"
                   type="primary"
                   htmlType="submit"

@@ -41,13 +41,13 @@ const Footer = () => {
                     <Link to="/">All Products</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="/kidsclothing">Kids Clothings</Link>
+                    <Link to="#">Kids Clothings</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="womenshoes">Women Shoes</Link>
+                    <Link to="#">Women Shoes</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="/menclothing">Men Clothing</Link>
+                    <Link to="#">Men Clothing</Link>
                   </ListGroupItem>
                 </ListGroup>
               </div>
@@ -57,7 +57,7 @@ const Footer = () => {
                 <h4 className="quick__links-title">Useful Links</h4>
                 <ListGroup>
                   <ListGroupItem className="ps-0 border-0">
-                    <Link to="/about">About US</Link>
+                    <Link to="/introduce">About US</Link>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0">
                     <Link to="/contact">Contact US</Link>

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Contact.scss'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { Col, Container, Form, Row } from 'reactstrap'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { useRef } from 'react'
@@ -14,12 +14,12 @@ const StyledContactForm = styled.div`
   width: 600px;
   form {
     display: flex;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     flex-direction: column;
-    width: 100%;
-    font-size: 16px;
+    /* width: 100%; */
+    /* font-size: 16px; */
     input {
-      width: 100%;
+      /* width: 100%; */
       height: 35px;
       padding: 7px;
       outline: none;
@@ -30,9 +30,9 @@ const StyledContactForm = styled.div`
       }
     }
     textarea {
-      max-width: 100%;
+      /* max-width: 100%;
       min-width: 100%;
-      width: 100%;
+      width: 100%; */
       max-height: 100px;
       min-height: 100px;
       padding: 7px;
@@ -59,6 +59,35 @@ const StyledContactForm = styled.div`
       margin-bottom: 0.5rem;
       color: red;
       font-size: 12px;
+    }
+    @media screen and (max-width: 940px) {
+      label {
+        margin-left: 80px;
+      }
+      input {
+        width: 100%;
+        margin-left: 80px;
+      }
+      textarea {
+        width: 100%;
+        margin-left: 80px;
+        margin-right: 80px;
+      }
+    }
+
+    @media screen and (max-width: 760px) {
+      label {
+        margin-left: 80px;
+      }
+      input {
+        width: 76%;
+        margin-left: 80px;
+      }
+      textarea {
+        width: 76%;
+        margin-left: 80px;
+        margin-right: 80px;
+      }
     }
   }
 `
@@ -271,95 +300,98 @@ const Contact = () => {
           </Form>
         </Col> */}
 
-        <StyledContactForm>
-          <form ref={form} onSubmit={handleSubmit(submitData)}>
-            {formStatus && renderAlert()}
-            <label>Name</label>
-            <input
-              type="text"
-              name="user_name"
-              onChange={postUserData}
-              value={userData.name}
-              {...register('user_name', {
-                required: 'Username is required...',
-                minLength: {
-                  value: 3,
-                  message: 'Username must be atleast 3 characters long...',
-                },
-                maxLength: {
-                  value: 30,
-                  message: 'Username must be atmost 30 characters long...',
-                },
-              })}
-              placeholder="Enter your name"
-            />
-            <p>{errors.user_name?.message}</p>
-            <label>Email</label>
-            <input
-              type="email"
-              name="user_email"
-              onChange={postUserData}
-              value={userData.email}
-              {...register('user_email', {
-                required: 'Email is required...',
-                pattern: {
-                  value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: 'Email must be valid',
-                },
-              })}
-              placeholder="Enter your email"
-            />
-            <p>{errors.user_email?.message}</p>
-            <label>Phone</label>
-            <input
-              type="number"
-              name="user_phone"
-              onChange={postUserData}
-              value={userData.phone}
-              {...register('user_phone', {
-                required: 'Phone is required...',
-                pattern: {
-                  value: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
-                  message: 'Phone must be valid',
-                },
-              })}
-              placeholder="Enter your phone"
-            />
-            <p>{errors.user_phone?.message}</p>
-            <label>Address</label>
-            <input
-              type="text"
-              name="user_address"
-              onChange={postUserData}
-              value={userData.address}
-              {...register('user_address', {
-                required: 'Address is required...',
-              })}
-              placeholder="Enter your address"
-            />
-            <p>{errors.user_address?.message}</p>
-            <label>Message</label>
-            <textarea
-              name="user_message"
-              onChange={postUserData}
-              value={userData.message}
-              {...register('user_message', {
-                required: 'Message is required...',
-                minLength: {
-                  value: 10,
-                  message: 'Minimum Required length is 10',
-                },
-                maxLength: {
-                  value: 100,
-                  message: 'Maximum allowed length is 100 ',
-                },
-              })}
-              placeholder="Enter your message"
-            />
-            <p>{errors.user_message?.message}</p>
-            <input type="submit" value="Send Message" />
-          </form>
-        </StyledContactForm>
+        <Col lg="6" md="6" sm="3" className="mb-5">
+          {' '}
+          <StyledContactForm>
+            <Form ref={form} onSubmit={handleSubmit(submitData)}>
+              {formStatus && renderAlert()}
+              <label>Name</label>
+              <input
+                type="text"
+                name="user_name"
+                onChange={postUserData}
+                value={userData.name}
+                {...register('user_name', {
+                  required: 'Username is required...',
+                  minLength: {
+                    value: 3,
+                    message: 'Username must be atleast 3 characters long...',
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: 'Username must be atmost 30 characters long...',
+                  },
+                })}
+                placeholder="Enter your name"
+              />
+              <p>{errors.user_name?.message}</p>
+              <label>Email</label>
+              <input
+                type="email"
+                name="user_email"
+                onChange={postUserData}
+                value={userData.email}
+                {...register('user_email', {
+                  required: 'Email is required...',
+                  pattern: {
+                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'Email must be valid',
+                  },
+                })}
+                placeholder="Enter your email"
+              />
+              <p>{errors.user_email?.message}</p>
+              <label>Phone</label>
+              <input
+                type="number"
+                name="user_phone"
+                onChange={postUserData}
+                value={userData.phone}
+                {...register('user_phone', {
+                  required: 'Phone is required...',
+                  pattern: {
+                    value: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
+                    message: 'Phone must be valid',
+                  },
+                })}
+                placeholder="Enter your phone"
+              />
+              <p>{errors.user_phone?.message}</p>
+              <label>Address</label>
+              <input
+                type="text"
+                name="user_address"
+                onChange={postUserData}
+                value={userData.address}
+                {...register('user_address', {
+                  required: 'Address is required...',
+                })}
+                placeholder="Enter your address"
+              />
+              <p>{errors.user_address?.message}</p>
+              <label>Message</label>
+              <textarea
+                name="user_message"
+                onChange={postUserData}
+                value={userData.message}
+                {...register('user_message', {
+                  required: 'Message is required...',
+                  minLength: {
+                    value: 10,
+                    message: 'Minimum Required length is 10',
+                  },
+                  maxLength: {
+                    value: 100,
+                    message: 'Maximum allowed length is 100 ',
+                  },
+                })}
+                placeholder="Enter your message"
+              />
+              <p>{errors.user_message?.message}</p>
+              <input type="submit" value="Send Message" />
+            </Form>
+          </StyledContactForm>
+        </Col>
       </Row>
     </Container>
   )
