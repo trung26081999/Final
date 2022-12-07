@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { notification } from "antd";
 
-export const PRODUCT_LIMIT = 10;
+export const PRODUCT_LIMIT = 12;
 
 const initialState = {
   productState: {

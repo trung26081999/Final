@@ -1,45 +1,45 @@
-.ant-menu-horizontal {
-  background-color: #eeeeee;
-  font-size: 17px;
-  font-weight: 700;
+// .ant-menu-horizontal {
+//   background-color: #eeeeee;
+//   font-size: 17px;
+//   font-weight: 700;
 
-  & > .ant-menu-item a {
-    color: black;
-    padding: 0 20px;
-    opacity: 1;
+//   & > .ant-menu-item a {
+//     color: black;
+//     padding: 0 20px;
+//     opacity: 1;
 
-    &:hover {
-      color: #ffffff;
-      opacity: 0.7;
-    }
-  }
-}
+//     &:hover {
+//       color: #ffffff;
+//       opacity: 0.7;
+//     }
+//   }
+// }
 
-.ant-menu-title-content {
-  color: black;
-}
+// .ant-menu-title-content {
+//   color: black;a
+// }
 
-.ant-menu-overflow {
-  align-items: center;
-  justify-content: space-between;
-}
+// .ant-menu-overflow {
+//   align-items: center;
+//   justify-content: space-between;
+// }
 
-@media only screen and (max-width: 426px) {
-  .ant-menu-horizontal {
-    font-size: 11px;
-  }
-  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
-    padding: 0;
-  }
-}
+// @media only screen and (max-width: 426px) {
+//   .ant-menu-horizontal {
+//     font-size: 11px;
+//   }
+//   .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
+//     padding: 0;
+//   }
+// }
 
-@mixin maxw($breakpoint){
-  @media screen and (max-width:$breakpoint) {
-    @content;
-  }
-}
-@mixin minw($breakpoint){
-  @media screen and (min-width:$breakpoint) {
-    @content;
-  }
-}
+// @mixin maxw($breakpoint){
+//   @media screen and (max-width:$breakpoint) {
+//     @content;
+//   }
+// }
+// @mixin minw($breakpoint){
+//   @media screen and (min-width:$breakpoint) {
+//     @content;
+//   }
+// }

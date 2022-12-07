@@ -220,7 +220,9 @@ export default function DetailProduct() {
     }
 
     console.log(reviewObj)
-    toast.success('Review submmitted')
+    notification.success({
+      message: `Review Successed`,
+    })
   }
 
   return (
@@ -351,7 +353,7 @@ export default function DetailProduct() {
 
                     <div className="review__form">
                       <h4>Leave your experience</h4>
-                      <form action="" onSubmit={submitHandler}>
+                      <form onSubmit={submitHandler}>
                         <div className="form__group">
                           <input
                             type="text"

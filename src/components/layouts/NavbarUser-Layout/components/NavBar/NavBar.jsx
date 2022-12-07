@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useRef,useCallback} from "react";
 import LogoPage from "../../../../../assets/Clothing-store.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { BiCartAlt, BiUserCircle } from "react-icons/bi";
 import { GrUserAdmin } from "react-icons/gr";
 import { BsSearch } from "react-icons/bs";
+import { BiMenu } from "react-icons/bi";
 import { category } from "./category";
 import { Button, Drawer, Dropdown, Menu, Space, Badge, Modal } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { Container, Row } from "reactstrap";
+
 import {
   clearCart,
   getTotalItem,
@@ -21,41 +24,25 @@ import {
   logoutAction,
 } from "../../../../../stores/slices/user.slice";
 
-const Container = styled.div`
-  width: 100%;
-  min-width: 1200px;
-  background: #fff;
-  display: block;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
+// const Container = styled.div`
+//   width: 100%;
+//   min-width: 1200px;
+//   background: #fff;
+//   display: block;
+//   position: fixed;
+//   top: 0;
+//   z-index: 1000;
 
-  @media (min-width: 767px) and (max-width: 1024px) {
-    width: 100%;
-    min-width: 767px;
-  }
-
-  @media (max-width: 426px) {
-    width: 46%;
-    min-width: 320px;
-  }
-`;
+// `;
 
 const Wrapper = styled.div`
-  color: black;
-  padding: 10px 40px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  // color: black;
+  // padding: 10px 40px;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: center;
+  // justify-content: space-between;
 
-  @media (min-width: 767px) and (max-width: 1024px) {
-    padding: 5px;
-  }
-
-  @media (max-width: 426px) {
-    padding: 3px;
-  }
 `;
 
 const Center = styled.div`
@@ -78,11 +65,10 @@ const Right = styled.div`
 const Logo = styled.img`
   width: 100%;
 
-  @media (max-width: 426px) {
-    height: 35px;
-  }
+  
 
-  @media (min-width: 767px) and (max-width: 1024px) {
+  @media (max-width: 767px) {
+    display:none;
   }
 `;
 const ButtonLogout = styled.div`
@@ -129,7 +115,24 @@ export default function NavBar() {
   // console.log(cartItem.length)
   const listCartItem = cartState.cart;
   const userInfoDashboard = userInfo?.data?.decentralization;
+  const headerRef = useRef(null)
+  const menuRef = useRef(null);
+  const stickyHeaderFunc = useCallback(()=>{
+    window.addEventListener('scroll',()=>{
+      if(
+        document.body.scrollTop >80 ||
+        document.documentElement.scrollTop >80
+      ){
+        headerRef.current.classList.add("sticky__header");
+      }else{
+        headerRef.current.classList.remove("sticky__header");
+      }
+    });
+  },[])
 
+  useEffect(()=>{
+    stickyHeaderFunc();
+  },[])
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [menuList, setMenuList] = useState([]);
@@ -141,7 +144,7 @@ export default function NavBar() {
     dispatch(logoutAction());
     dispatch(clearCart());
   };
-
+  const menuToggle = () => menuRef.current.classList.toggle("active__menu");
   const authenticatedMenu = [
     // <Modal
     //   title="Basic Modal"
@@ -249,9 +252,11 @@ export default function NavBar() {
 
   return (
     <>
-      <Container>
-        <Wrapper>
-          <Left>
+      <header className="header" ref={headerRef} >
+        <Container>
+          <Row>
+        <Wrapper className="nav__wrapper"  >
+          <Left >
             <Logo
               src={LogoPage}
               alt=""
@@ -259,26 +264,28 @@ export default function NavBar() {
               onClick={navigateToHome}
             />
           </Left>
-          <Center>
-            <NavLink to={"/"}>
-              <MenuItem>Trang chủ</MenuItem>
+          <div className="navigation" ref={menuRef} onClick={menuToggle}>
+          <Center className="menu" >
+            <NavLink to={"/"} className="nav__item"  >
+              <MenuItem >Trang chủ</MenuItem>
             </NavLink>
-            <NavLink to={"/allproducts"}>
+            <NavLink to={"/allproducts"} className="nav__item" >
               <MenuItem>Sản phẩm</MenuItem>
             </NavLink>
 
-            <NavLink to={"/contact"}>
+            <NavLink to={"/contact"} className="nav__item" >
               <MenuItem>Liên hệ</MenuItem>
             </NavLink>
-            <NavLink to={"/introduce"}>
+            <NavLink to={"/introduce"} className="nav__item" >
               <MenuItem>Giới thiệu</MenuItem>
             </NavLink>
-            <NavLink to={"/cart"}>
+            <NavLink to={"/cart"} className="nav__item" >
               <Badge count={cartItem}>
                 <MenuItem>Giỏ hàng</MenuItem>
               </Badge>
             </NavLink>
           </Center>
+          </div>
           <Right>
             {" "}
             <div className="icons">
@@ -360,10 +367,28 @@ export default function NavBar() {
                   </Button>
                 </Space>
               </Space> */}
-            </div>
+              <div className="mobile__menu">
+              <Button 
+                style={{
+                  fontSize: "28px",
+                  background: "none",
+                  border: "none",
+                  color: "black",
+                }}
+                
+                type="primary"
+              >
+                
+                <BiMenu  onClick={menuToggle} >
+                 </BiMenu>
+              </Button>
+              </div>
+            </div>    
           </Right>
         </Wrapper>
-      </Container>
+        </Row>
+          </Container>
+      </header>
     </>
   );
 }
