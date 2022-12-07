@@ -123,7 +123,7 @@ const Contact = () => {
   }
 
   const submitData = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     console.log('ádasdfasdfsdf')
     console.log(e)
     // console.log(data)
@@ -137,15 +137,15 @@ const Contact = () => {
       )
       .then(
         (res) => {
-          console.log('SUCCESS!', res)
+          console.log('SUCCESS!', res.status)
           console.log(res.text)
-          // setUserData({
-          //   user_name: '',
-          //   user_email: '',
-          //   user_phone: '',
-          //   user_address: '',
-          //   user_message: '',
-          // })
+          setUserData({
+            user_name: '',
+            user_email: '',
+            user_phone: '',
+            user_address: '',
+            user_message: '',
+          })
           console.log('message sent')
           setFormStatus('SUCCESS')
         },
@@ -210,100 +210,10 @@ const Contact = () => {
           <p>{contactConfig.description}</p>
         </Col>
 
-        {/* <Col lg="6" className="d-flex align-items-center">
-          {formStatus && renderAlert()}
-          <Form
-            className="contact__form w-100"
-            onSubmit={submitData}
-            ref={form}
-          >
-            <Row>
-              <Col lg="6" className="form-group">
-                <input
-                  className="form-control"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  value={userData.name}
-                  onChange={postUserData}
-                  type="text"
-                  required
-                />
-              </Col>
-              <Col lg="6" className="form-group">
-                <input
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  value={userData.email}
-                  onChange={postUserData}
-                  type="email"
-                  required
-                />
-              </Col>
-              <Col lg="6" className="form-group">
-                <input
-                  className="form-control"
-                  id="phone"
-                  name="phone"
-                  placeholder="Phone"
-                  value={userData.phone}
-                  onChange={postUserData}
-                  type="number"
-                  required
-                />
-              </Col>
-              <Col lg="6" className="form-group">
-                <input
-                  className="form-control"
-                  id="address"
-                  name="address"
-                  placeholder="Address"
-                  value={userData.address}
-                  onChange={postUserData}
-                  type="text"
-                  required
-                />
-              </Col>
-            </Row>
-            <textarea
-              className="form-control"
-              id="message"
-              name="message"
-              placeholder="Enter Your Message"
-              value={userData.message}
-              onChange={postUserData}
-              rows="5"
-              required
-            ></textarea>
-            <br />
-            <div class="form-check form-checkbox-style">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-              />
-              <label class="form-check-label" className="main-hero-para">
-                I agree that the policy may contact me at the email address or
-                phone number above
-              </label>
-            </div>
-            <Row>
-              <Col lg="12" className="form-group">
-                <button className="btn__submit" type="submit">
-                  Send Message
-                </button>
-              </Col>
-            </Row>
-          </Form>
-        </Col> */}
-
         <Col lg="6" md="6" sm="3" className="mb-5">
           {' '}
           <StyledContactForm>
-            <Form ref={form} onSubmit={handleSubmit(submitData)}>
+            <form ref={form} onSubmit={submitData}>
               {formStatus && renderAlert()}
               <label>Name</label>
               <input
@@ -311,6 +221,7 @@ const Contact = () => {
                 name="user_name"
                 onChange={postUserData}
                 value={userData.name}
+                required
                 {...register('user_name', {
                   required: 'Username is required...',
                   minLength: {
@@ -331,6 +242,7 @@ const Contact = () => {
                 name="user_email"
                 onChange={postUserData}
                 value={userData.email}
+                required
                 {...register('user_email', {
                   required: 'Email is required...',
                   pattern: {
@@ -347,6 +259,7 @@ const Contact = () => {
                 name="user_phone"
                 onChange={postUserData}
                 value={userData.phone}
+                required
                 {...register('user_phone', {
                   required: 'Phone is required...',
                   pattern: {
@@ -363,6 +276,7 @@ const Contact = () => {
                 name="user_address"
                 onChange={postUserData}
                 value={userData.address}
+                required
                 {...register('user_address', {
                   required: 'Address is required...',
                 })}
@@ -374,6 +288,7 @@ const Contact = () => {
                 name="user_message"
                 onChange={postUserData}
                 value={userData.message}
+                required
                 {...register('user_message', {
                   required: 'Message is required...',
                   minLength: {
@@ -389,7 +304,7 @@ const Contact = () => {
               />
               <p>{errors.user_message?.message}</p>
               <input type="submit" value="Send Message" />
-            </Form>
+            </form>
           </StyledContactForm>
         </Col>
       </Row>
