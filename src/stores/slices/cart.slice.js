@@ -90,7 +90,7 @@ const cartSlice = createSlice({
 
         toast.success(`Item QTY Increased`)
       }
-      // localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
+      localStorage.setItem(CART_ITEM_STORAGE, JSON.stringify(cart))
     },
     decreaseCart: (state, action) => {
       const cartIndex = action.payload
@@ -114,7 +114,7 @@ const cartSlice = createSlice({
 
         toast.success(`Item QTY Decreased`)
       }
-      // localStorage.setItem(CART_ITEM_KEY, JSON.stringify(cart))
+      localStorage.setItem(CART_ITEM_STORAGE, JSON.stringify(cart))
     },
     removeCartAction: (state, action) => {
       const listCartItem = state.cartState.cart
